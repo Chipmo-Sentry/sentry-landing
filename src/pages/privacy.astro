@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { pickLang } from "@/lib/i18n";
+
+const lang = pickLang(Astro.url.searchParams.get("lang"));
+
+const TITLE = lang === "mn" ? "Нууцлалын бодлого" : "Privacy Policy";
+---
+
+<Layout title={`${TITLE} — Chipmo Sentry`} description={TITLE} lang={lang}>
+  <Header lang={lang} />
+
+  <main class="mx-auto max-w-3xl px-4 py-16">
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{TITLE}</h1>
+    <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">
+      {lang === "mn" ? "Сүүлд шинэчилсэн:" : "Last updated:"} 2026-05-28
+    </p>
+
+    <div class="prose prose-slate mt-10 space-y-6 text-[var(--color-foreground)]">
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "1. Бид ямар мэдээлэл цуглуулдаг вэ?" : "1. What we collect"}
+        </h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Бид customer-ийн дэлгүүрийн камерын видеог зөвхөн threshold-аас давсан мөч (5-15 секунд clip) хадгална. 24/7 бичлэг ХАДГАЛАХГҮЙ. Нэр, утас, имэйл, төлбөрийн мэдээллийг зөвхөн account үүсгэх + holboo barihад ашигладаг."
+            : "We capture only short clips (5–15 seconds) at moments when AI risk exceeds your store's threshold. We do not perform 24/7 video recording. Account details (name, phone, email, billing) are used only to create your account and contact you about service."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "2. Юу хийдэггүй вэ?" : "2. What we don't do"}
+        </h2>
+        <ul class="mt-2 list-disc space-y-1 pl-6 text-[var(--color-muted-foreground)]">
+          <li>{lang === "mn" ? "❌ Хүний нүүр таних (facial recognition)" : "❌ Facial recognition"}</li>
+          <li>{lang === "mn" ? "❌ Биометр мэдээлэл хадгалах" : "❌ Biometric storage"}</li>
+          <li>{lang === "mn" ? "❌ Видеог гуравдагч этгээдэд зарах" : "❌ Selling video to third parties"}</li>
+          <li>{lang === "mn" ? "❌ Threshold-аас доош хэвийн мөчийг бичих" : "❌ Recording moments below threshold"}</li>
+          <li>{lang === "mn" ? "❌ Reklam профайл, tracking pixel" : "❌ Ad profiling or tracking pixels"}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "3. Хаана хадгалагдана?" : "3. Where data is stored"}
+        </h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Видео clip-үүд Hetzner-ийн ЕХ-ийн data center (Falkenstein, Германд) дээр шифрлэгдэж хадгалагдана. Хэрэглэгчийн данс + alert metadata Railway-ийн EU PostgreSQL-д. Гуравдагч этгээд (Anthropic, OpenAI гэх мэт) хүртээмжгүй — VLM нь self-hosted Ollama, манай GPU server дээр."
+            : "Video clips are encrypted at rest on Hetzner's EU data center (Falkenstein, Germany). Account + alert metadata is on Railway's EU PostgreSQL. We don't use third-party AI APIs (Anthropic, OpenAI, etc.) — our VLM is self-hosted via Ollama on dedicated GPU servers."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "4. Хадгалах хугацаа" : "4. Retention"}
+        </h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Clip-үүд таны tier-ын дагуу 7 / 30 / 90 хоног үлдэнэ. Дараа автоматаар устгана. Хүсэлтээр илүү эрт устгах боломжтой (1 ажлын өдөр)."
+            : "Clips are retained 7 / 30 / 90 days depending on your tier, then auto-deleted. Earlier deletion on request (within 1 business day)."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "5. Танай эрх" : "5. Your rights"}
+        </h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Та хүсэлтээр: (a) бүх бичлэг + dataг татах (b) аккаунт устгах (c) тодорхой clip-ийг устгах. hello@chipmo.mn руу имэйл явуул — 1 ажлын өдөрт хариулна."
+            : "On request you may: (a) export all clips + data, (b) delete your account, (c) delete specific clips. Email hello@chipmo.mn — reply within 1 business day."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">
+          {lang === "mn" ? "6. Холбоо барих" : "6. Contact"}
+        </h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          Chipmo LLC · {lang === "mn" ? "Улаанбаатар, Монгол" : "Ulaanbaatar, Mongolia"} · <a class="font-medium text-[var(--color-primary)] hover:underline" href="mailto:privacy@chipmo.mn">privacy@chipmo.mn</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

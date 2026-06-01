@@ -1,0 +1,32 @@
+---
+import { FAQ } from "@/lib/content";
+import { type Lang, pickLang } from "@/lib/i18n";
+
+interface Props { lang?: Lang }
+const lang = pickLang(Astro.props.lang);
+---
+
+<section id="faq" class="border-t border-[var(--color-border)] bg-[var(--color-background)]">
+  <div class="mx-auto max-w-3xl px-4 py-20 sm:py-24">
+    <h2 class="text-center text-3xl font-bold tracking-tight sm:text-4xl">{FAQ.title[lang]}</h2>
+
+    <div class="mt-12 divide-y divide-[var(--color-border)] rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[var(--color-surface)]">
+      {FAQ.items.map((item, i) => (
+        <details class="group" open={i === 0 ? true : undefined}>
+          <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left font-medium hover:bg-[var(--color-muted)]/60 list-none">
+            <span class="flex-1">{item.q[lang]}</span>
+            <svg class="h-4 w-4 flex-shrink-0 text-[var(--color-muted-foreground)] transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.2 7.2a.8.8 0 011.2 0L10 10.7l3.6-3.5a.8.8 0 011.2 1.1l-4.2 4.2a.8.8 0 01-1.2 0L5.2 8.3a.8.8 0 010-1.1z" clip-rule="evenodd"/>
+            </svg>
+          </summary>
+          <div class="px-5 pb-5 pt-1 text-sm leading-relaxed text-[var(--color-muted-foreground)]" set:html={item.a[lang].replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--color-foreground)]">$1</strong>')}></div>
+        </details>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center text-sm text-[var(--color-muted-foreground)]">
+      {lang === "mn" ? "Өөр асуулт байна уу? " : "Have another question? "}
+      <a href="mailto:hello@chipmo.mn" class="font-medium text-[var(--color-primary)] hover:underline">hello@chipmo.mn</a>
+    </p>
+  </div>
+</section>

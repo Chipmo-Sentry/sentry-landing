@@ -1,0 +1,78 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { pickLang } from "@/lib/i18n";
+
+const lang = pickLang(Astro.url.searchParams.get("lang"));
+const TITLE = lang === "mn" ? "Үйлчилгээний нөхцөл" : "Terms of Service";
+---
+
+<Layout title={`${TITLE} — Chipmo Sentry`} description={TITLE} lang={lang}>
+  <Header lang={lang} />
+
+  <main class="mx-auto max-w-3xl px-4 py-16">
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{TITLE}</h1>
+    <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">
+      {lang === "mn" ? "Сүүлд шинэчилсэн:" : "Last updated:"} 2026-05-28
+    </p>
+
+    <div class="mt-10 space-y-6 text-[var(--color-foreground)]">
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "1. Үйлчилгээний агуулга" : "1. Service description"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Chipmo Sentry бол cloud-based SaaS — customer-ийн IP камераас real-time stream аваад AI хяналт хийдэг. Subscription үндсэн дээр сар бүрд төлбөртэй."
+            : "Chipmo Sentry is a cloud-based SaaS that streams from customer IP cameras and runs AI monitoring. Subscription-based monthly billing."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "2. Хариуцлагын хязгаар" : "2. Limitation of liability"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Chipmo Sentry бол AI-ийн дэмжлэг — хүний шийдвэрийг орлохгүй. Бид staff-н шийдэл, customer-ийн хохирол, эсвэл хууль зөрчсөн үйлдэлд хариуцлага хүлээхгүй. AI зөв ажиллах магадлал 100% биш — false positive + false negative гарах боломжтой."
+            : "Chipmo Sentry is an AI assistant — it does not replace human judgment. We aren't liable for staff actions, customer losses, or legal disputes arising from use. AI accuracy is not 100% — false positives and false negatives can occur."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "3. Уptime SLA" : "3. Uptime SLA"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Pro/Premium tier — 99.5% сарын uptime амлалт. Алдсан үед credit олгоно (downtime цаг × pro-rata). Starter tier — best-effort, SLA байхгүй."
+            : "Pro/Premium tiers — 99.5% monthly uptime commitment. Credits issued pro-rata for missed SLA. Starter — best-effort, no SLA."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "4. Цуцлал" : "4. Termination"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Customer хүссэн үедээ цуцлах эрхтэй (өмнө мэдэгдэх шаардлагагүй). Бид зөвхөн (a) хууль зөрчсөн (b) бусдын эрхэд халдсан тохиолдолд account-ыг хаах эрхтэй — 30 хоногын мэдэгдэлтэй."
+            : "Customers may cancel anytime (no prior notice required). We may suspend an account only for (a) illegal activity or (b) abuse of others' rights, with 30-day notice."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "5. Өөрчлөлт" : "5. Changes"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Нөхцлийг өөрчилбөл 30 хоногийн өмнө имэйлээр мэдэгдэнэ. Өөрчлөгдсөн нөхцөл хүчингүй бол customer цуцлах эрхтэй."
+            : "We give 30 days' email notice before changing these terms. If you disagree with changes, you may cancel."}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold">{lang === "mn" ? "6. Хууль" : "6. Governing law"}</h2>
+        <p class="mt-2 text-[var(--color-muted-foreground)]">
+          {lang === "mn"
+            ? "Монгол улсын хууль. Маргаан гарвал Улаанбаатарын анхан шатны шүүхэд шийдвэрлэнэ."
+            : "Mongolia. Disputes resolved in Ulaanbaatar courts of first instance."}
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

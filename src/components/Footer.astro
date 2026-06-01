@@ -1,0 +1,66 @@
+---
+import { FOOTER, BRAND } from "@/lib/content";
+import { type Lang, pickLang } from "@/lib/i18n";
+import Logo from "./Logo.astro";
+
+interface Props { lang?: Lang }
+const lang = pickLang(Astro.props.lang);
+---
+
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <Logo size={24} />
+          <span class="text-sm font-semibold">{BRAND.name}</span>
+        </div>
+        <p class="text-sm text-[var(--color-muted-foreground)]">{FOOTER.tagline[lang]}</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-semibold">{FOOTER.product[lang]}</h3>
+        <ul class="space-y-2">
+          {FOOTER.productLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]">
+                {l.label[lang]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-semibold">{FOOTER.company[lang]}</h3>
+        <ul class="space-y-2">
+          {FOOTER.companyLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]">
+                {l.label[lang]}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-semibold">{FOOTER.open[lang]}</h3>
+        <ul class="space-y-2">
+          {FOOTER.openLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]" rel="noopener" target="_blank">
+                {l.label} →
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-2 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted-foreground)] sm:flex-row sm:justify-between">
+      <span>{FOOTER.copyright[lang]}</span>
+      <span>Apache 2.0 · <a href="https://github.com/Chipmo-Sentry" class="hover:text-[var(--color-foreground)]" target="_blank" rel="noopener">github.com/Chipmo-Sentry</a></span>
+    </div>
+  </div>
+</footer>

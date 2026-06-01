@@ -1,0 +1,38 @@
+---
+interface Props {
+  size?: number;
+  withWordmark?: boolean;
+  class?: string;
+}
+const { size = 32, withWordmark = false, class: cls = "" } = Astro.props;
+const viewBox = withWordmark ? "0 0 168 36" : "0 0 36 36";
+---
+
+<svg
+  viewBox={viewBox}
+  width={withWordmark ? size * 4.67 : size}
+  height={size}
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Chipmo Sentry"
+  class={cls}
+>
+  <!-- Aperture: outer ring + inner lens + glint -->
+  <circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--color-primary)" stroke-width="2.5"/>
+  <circle cx="18" cy="18" r="6" fill="var(--color-primary)"/>
+  <circle cx="22" cy="14" r="1.6" fill="var(--color-background)"/>
+
+  {withWordmark && (
+    <text
+      x="44"
+      y="24"
+      font-family="var(--font-display)"
+      font-size="18"
+      font-weight="700"
+      fill="var(--color-foreground)"
+      letter-spacing="-0.02em"
+    >
+      Chipmo Sentry
+    </text>
+  )}
+</svg>

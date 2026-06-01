@@ -1,0 +1,74 @@
+---
+import { NAV, BRAND } from "@/lib/content";
+import { type Lang, pickLang } from "@/lib/i18n";
+import Logo from "./Logo.astro";
+
+interface Props { lang?: Lang }
+const lang = pickLang(Astro.props.lang);
+const altLang = lang === "mn" ? "en" : "mn";
+const altLabel = altLang === "en" ? "EN" : "МН";
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-background)]/85 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-background)]/70"
+>
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
+    <a href="/" class="flex items-center gap-2" aria-label={BRAND.name}>
+      <Logo size={26} />
+      <span class="text-sm font-semibold tracking-tight">{BRAND.name}</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+      {NAV.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-md px-3 py-1.5 text-sm font-medium text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]"
+        >
+          {item.label[lang]}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={altLang === "en" ? "/?lang=en" : "/"}
+        class="rounded-md border border-[var(--color-border)] px-2.5 py-1 text-xs font-medium text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]"
+        aria-label={`Switch to ${altLang}`}
+      >
+        {altLabel}
+      </a>
+      <a
+        href="#cta"
+        class="hidden rounded-[var(--radius)] bg-[var(--color-primary)] px-3.5 py-1.5 text-sm font-medium text-[var(--color-primary-foreground)] shadow-sm transition hover:opacity-90 sm:inline-flex"
+      >
+        {lang === "mn" ? "Туршилт эхлүүлэх" : "Start trial"}
+      </a>
+
+      <details class="relative md:hidden">
+        <summary class="cursor-pointer list-none rounded-md p-1.5 hover:bg-[var(--color-muted)]" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </summary>
+        <div class="absolute right-0 mt-2 w-56 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] p-2 shadow-lg">
+          {NAV.map((item) => (
+            <a
+              href={item.href}
+              class="block rounded px-3 py-2 text-sm text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
+            >
+              {item.label[lang]}
+            </a>
+          ))}
+          <a
+            href="#cta"
+            class="mt-1 block rounded bg-[var(--color-primary)] px-3 py-2 text-center text-sm font-medium text-[var(--color-primary-foreground)]"
+          >
+            {lang === "mn" ? "Туршилт эхлүүлэх" : "Start trial"}
+          </a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

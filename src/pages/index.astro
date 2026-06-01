@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Hero from "@/components/Hero.astro";
+import HowItWorks from "@/components/HowItWorks.astro";
+import Features from "@/components/Features.astro";
+import Pricing from "@/components/Pricing.astro";
+import FAQ from "@/components/FAQ.astro";
+import CTA from "@/components/CTA.astro";
+import Footer from "@/components/Footer.astro";
+import { pickLang } from "@/lib/i18n";
+import { BRAND, HERO } from "@/lib/content";
+
+const lang = pickLang(Astro.url.searchParams.get("lang"));
+
+const title = `${BRAND.name} — ${HERO.title[lang]}`;
+const description = HERO.subtitle[lang];
+---
+
+<Layout title={title} description={description} lang={lang}>
+  <Header lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <HowItWorks lang={lang} />
+    <Features lang={lang} />
+    <Pricing lang={lang} />
+    <FAQ lang={lang} />
+    <CTA lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

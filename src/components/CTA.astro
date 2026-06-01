@@ -1,0 +1,56 @@
+---
+import { CTA } from "@/lib/content";
+import { type Lang, pickLang } from "@/lib/i18n";
+
+interface Props { lang?: Lang }
+const lang = pickLang(Astro.props.lang);
+---
+
+<section id="cta" class="border-t border-[var(--color-border)] bg-[var(--color-background)]">
+  <div class="mx-auto max-w-3xl px-4 py-20 sm:py-24">
+    <div class="rounded-[calc(var(--radius)*2)] border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-primary-tint)] to-[var(--color-background)] p-8 sm:p-12 text-center">
+      <h2 class="text-balance text-3xl font-bold tracking-tight sm:text-4xl">{CTA.title[lang]}</h2>
+      <p class="mx-auto mt-3 max-w-xl text-[var(--color-muted-foreground)]">{CTA.subtitle[lang]}</p>
+
+      <form
+        method="POST"
+        action="/api/lead"
+        class="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2"
+        novalidate
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={CTA.emailPlaceholder[lang]}
+          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:col-span-2"
+        />
+        <input
+          type="text"
+          name="store_name"
+          placeholder={CTA.storeFieldPlaceholder[lang]}
+          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+        />
+        <input
+          type="number"
+          name="camera_count"
+          min="1"
+          max="50"
+          placeholder={CTA.cameraCountPlaceholder[lang]}
+          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+        />
+
+        <button
+          type="submit"
+          class="h-11 rounded-[var(--radius)] bg-[var(--color-primary)] px-6 text-sm font-medium text-[var(--color-primary-foreground)] shadow-sm transition hover:opacity-90 sm:col-span-2"
+        >
+          {CTA.submit[lang]}
+        </button>
+
+        <p class="text-xs text-[var(--color-muted-foreground)] sm:col-span-2">
+          {CTA.privacyNote[lang]}
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
