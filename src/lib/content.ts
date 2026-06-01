@@ -15,7 +15,7 @@ export function tr(s: LocalizedString, lang: Lang): string {
 export const BRAND = {
   name: "Chipmo Sentry",
   tagline: T(
-    "Дэлгүүрийн камер — ажилтанд орлох AI",
+    "Камер бүрийг сонор сэрэмжтэй AI харуул болгоно",
     "Your store cameras — staffed by AI",
   ),
 };
@@ -30,13 +30,13 @@ export const NAV = [
 
 // ── Hero ─────────────────────────────────────────────────────────────
 export const HERO = {
-  eyebrow: T("AI-аар хулгайн илрүүлэлт SaaS", "AI shoplifting detection · SaaS"),
+  eyebrow: T("Дэлгүүрт зориулсан AI хулгай хяналт", "AI shoplifting detection · SaaS"),
   title: T(
     "Хулгайч гарахад нь биш, гараагүй цагт нь барина",
     "Catch shoplifters in the act — not after.",
   ),
   subtitle: T(
-    "Чиний одоо байгаа IP камер дээр AI 24/7 хүн бүрд эрсдлийн оноо тавьж, 70%-аас давсан мөч нь staff-н утсанд Telegram-аар очно. Шинэ hardware шаардлагагүй, өдрийн $0.30-аас эхэлнэ.",
+    "Танай одоо ашиглаж буй IP камер дээр AI 24/7 хүн бүрд эрсдэлийн оноо тавьдаг. Эрсдэл 70% давмагц ажилтны утсанд бичлэгийн хамт Telegram мэдэгдэл шууд очно. Шинэ тоног төхөөрөмж авах шаардлагагүй — сард ердөө 25,000₮-аас, эхний 3 сар үнэгүй.",
     "AI scores every shopper's risk on the cameras you already own. When risk crosses 70%, staff get a Telegram alert with the clip — in under 15 seconds. No new hardware. Starts at $0.30/day.",
   ),
   primaryCta: T("Үнэгүй туршилт авах", "Start free pilot"),
@@ -51,7 +51,7 @@ export const HERO = {
 export const HOW = {
   title: T("Хэрхэн ажилладаг", "How it works"),
   subtitle: T(
-    "4 алхамтай, 5 минутын дотор install",
+    "4 алхам — 5 минутын дотор суулгана",
     "4 steps, installed in under 5 minutes",
   ),
   steps: [
@@ -59,31 +59,31 @@ export const HOW = {
       n: "01",
       title: T("Агент суулгах", "Install the agent"),
       body: T(
-        "Дэлгүүрийн PC дээр Windows .exe татаад асаа. Camera-ийн RTSP URL-ээ оруул. PC өөр зүйлд ашиглагдаж байсан ч зүгээр.",
+        "Дэлгүүрийн компьютер дээр Windows программ (.exe) татаж асаагаад камерынхаа RTSP хаягийг оруулна. Компьютер өөр зүйлд ашиглагдаж байсан ч болно — программ 5%-аас бага хүчин чадал иднэ.",
         "Run the Windows .exe on your shop PC and paste each camera's RTSP URL. Existing PC is fine — agent uses <5% CPU.",
       ),
     },
     {
       n: "02",
-      title: T("Live stream + AI overlay", "Live stream + AI overlay"),
+      title: T("Бүх камер шууд дэлгэцэнд", "Live stream + AI overlay"),
       body: T(
-        "Browser-аас Dashboard нээгээд бүх камер бодит цагт харагдана. AI хүн тус бүрд 🟢🟡🔴 эрсдэлийн box зурна. Latency 1-2 секунд.",
+        "Хөтчөөс хяналтын самбараа нээхэд бүх камер бодит цагт харагдана. AI хүн бүрийн эргэн тойронд 🟢🟡🔴 эрсдэлийн хүрээ зурна. Хоцролт ердөө 1–2 секунд.",
         "Open the dashboard in your browser — every camera live, with AI risk boxes (🟢🟡🔴) drawn around each person. 1–2 second latency.",
       ),
     },
     {
       n: "03",
-      title: T("Threshold breach", "Threshold breach"),
+      title: T("Эрсдэл хэтрэх үед", "Threshold breach"),
       body: T(
-        "Нэг хүний эрсдэл 70% хүрвэл AI clip автомат хадгалж, VLM нэмэлт тайлбар бичиж, staff Telegram alert хүлээн авна.",
+        "Хэн нэгний эрсдэл 70% хүрмэгц AI бичлэгийг автоматаар хадгалж, юу болсныг монголоор тайлбарлан ажилтны утсанд Telegram мэдэгдэл илгээнэ.",
         "When a person's risk crosses 70%, AI saves the clip, a VLM writes a reasoning blurb, and staff get a Telegram alert.",
       ),
     },
     {
       n: "04",
-      title: T("Reasonable response", "Sensible response"),
+      title: T("Цаг алдалгүй арга хэмжээ", "Sensible response"),
       body: T(
-        "Staff утасанд clip-тэй мэдээлэл ирнэ — 2 минутын дотор тэр хүнд хүрч очно. Алдсан бол ✗ дарж AI-г сургана. Pure post-event review биш — **prevention**.",
+        "Ажилтны утсанд бичлэгтэй мэдэгдэл ирэх тул 2 минутын дотор тухайн хүн дээр очиж амжина. Хэрэв буруу байвал ✗ дарахад AI суралцана. Дараа нь бичлэг ухах биш — **урьдчилан сэргийлэлт**.",
         "Staff sees the clip on their phone and can reach the customer within 2 minutes. Mistake? Tap ✗ and the model learns. **Prevention, not just post-event review.**",
       ),
     },
@@ -92,36 +92,36 @@ export const HOW = {
 
 // ── Features (bento grid) ────────────────────────────────────────────
 export const FEATURES = {
-  title: T("Юунд анхаардаг вэ", "Built for the way real stores work"),
+  title: T("Жинхэнэ дэлгүүрийн ажилд тааруулж бүтээсэн", "Built for the way real stores work"),
   subtitle: T(
-    "5 жил Монгол retail-д ажиллаж байсан хүний бодсон засвар",
+    "Монголын ритэйлд 5 жил ажилласан хүний бодож олсон шийдэл",
     "Designed from 5 years of frontline Mongolian retail",
   ),
   cards: [
     {
       kind: "large",
       icon: "live",
-      title: T("Live monitoring + AI overlay", "Live monitoring + AI overlay"),
+      title: T("Шууд хяналт + AI эрсдэлийн хүрээ", "Live monitoring + AI overlay"),
       body: T(
-        "Бүх камер дэлгэцийн grid-д live харагдана. AI бодит цагт хүн бүрд 🟢🟡🔴 эрсдэлийн % зурна. 24/7 хүн ажиллах хэрэггүй.",
+        "Бүх камер нэг дэлгэцэнд шууд харагдана. AI хүн бүрийн дээр 🟢🟡🔴 эрсдэлийн хувийг бодит цагт зурна. 24/7 хүн сууж хянах хэрэггүй.",
         "All cameras live in one grid. AI draws live risk percentages (🟢🟡🔴) per person. No 24/7 human monitoring needed.",
       ),
     },
     {
       kind: "small",
       icon: "shield",
-      title: T("Шинэ hardware шаардлагагүй", "No new hardware"),
+      title: T("Шинэ тоног төхөөрөмж шаардахгүй", "No new hardware"),
       body: T(
-        "Чиний одоо байгаа Hikvision/UNV/Dahua/TP-Link камеруудтай. PC дээр .exe л.",
+        "Танай одоогийн Hikvision/UNV/Dahua/TP-Link камеруудтайгаа. Компьютер дээр ердөө нэг программ суулгахад л болно.",
         "Works with your existing Hikvision/UNV/Dahua/TP-Link cameras. Just a .exe on your shop PC.",
       ),
     },
     {
       kind: "small",
       icon: "telegram",
-      title: T("Telegram alert", "Telegram alert"),
+      title: T("Telegram мэдэгдэл", "Telegram alert"),
       body: T(
-        "Staff утаст clip + reasoning Mongolian хэлээр ирнэ. 5-20 секундын дотор.",
+        "Ажилтны утсанд бичлэг болон тайлбар монголоор, 5–20 секундын дотор очно.",
         "Staff phone receives the clip + Mongolian reasoning in 5–20 seconds.",
       ),
     },
@@ -130,43 +130,43 @@ export const FEATURES = {
       icon: "save",
       title: T("Дискний орон зай хэмнэнэ", "Storage-friendly"),
       body: T(
-        "24/7 бичлэг ҮГҮЙ. Зөвхөн сэжигтэй мөч (~2 GB/cam/сар) автоматаар хадгалагдана.",
+        "24/7 бичлэг хийдэггүй. Зөвхөн сэжигтэй мөчүүд (камер тутамд сард ~2 GB) автоматаар хадгалагдана.",
         "No 24/7 recording. Only suspicious moments saved (~2 GB/cam/month).",
       ),
     },
     {
       kind: "small",
       icon: "privacy",
-      title: T("Хүний таних ҮГҮЙ", "No facial recognition"),
+      title: T("Царай таних ҮГҮЙ", "No facial recognition"),
       body: T(
-        "Зөвхөн зан үйлийн шинж тэмдэг — нэр таних, биометр хадгалах ҮГҮЙ.",
+        "Зөвхөн зан төлөвийг ажигладаг — царай таних, биометр мэдээлэл хадгалах огт үгүй.",
         "Behavior-only — we never identify faces or store biometric data.",
       ),
     },
     {
       kind: "small",
       icon: "language",
-      title: T("100% Монгол UI", "100% Mongolian UI"),
+      title: T("100% Монгол хэл дээр", "100% Mongolian UI"),
       body: T(
-        "Dashboard, alert, AI-н тайлбар бүгд Монголоор. English mode мөн бий.",
+        "Хяналтын самбар, мэдэгдэл, AI-ийн тайлбар бүгд монголоор. Англи хэл рүү ч шилжүүлж болно.",
         "Dashboard, alerts, AI reasoning — all in Mongolian. English mode also available.",
       ),
     },
     {
       kind: "medium",
       icon: "feedback",
-      title: T("Худал сэрэлтийг засдаг", "It learns from your feedback"),
+      title: T("Хуурамч дохиолол өөрөө буурдаг", "It learns from your feedback"),
       body: T(
-        "Worker AI-ийг ажилчин тэмдэглэлээр сургана. 2 долоо хоногийн дараа худал сэрэлт 50%-аар буурдаг.",
+        "Ажилтны нэг товшилтын тэмдэглэгээгээр AI суралцана. 2 долоо хоногийн дараа хуурамч дохиолол ихэвчлэн ~50% хүртэл буурдаг.",
         "Mark mistakes with one tap. Two weeks in, false alerts drop ~50% as the model adapts to your store.",
       ),
     },
     {
       kind: "medium",
       icon: "lightning",
-      title: T("1-2 секундын live latency", "1–2 second live latency"),
+      title: T("1–2 секундын хоцролт", "1–2 second live latency"),
       body: T(
-        "WebRTC-ээр HLS-ийн 6-10 секундын алдагдал биш — real-time prevention-д тохирно.",
+        "WebRTC технологиор хоцролт 2 секундээс бага — алдагдсаны дараа биш, тэр дор нь арга хэмжээ авах боломжтой.",
         "WebRTC streaming gives sub-2-second latency — enough to actually intervene.",
       ),
     },
@@ -175,9 +175,9 @@ export const FEATURES = {
 
 // ── Pricing ──────────────────────────────────────────────────────────
 export const PRICING = {
-  title: T("Хямд, тодорхой", "Simple, predictable pricing"),
+  title: T("Энгийн, ил тод үнэ", "Simple, predictable pricing"),
   subtitle: T(
-    "Нэг дэлгүүр / сар. Бүх tier-д alert хязгааргүй.",
+    "Нэг дэлгүүр / сар. Бүх багцад мэдэгдэл хязгааргүй.",
     "Per store / month. Unlimited alerts on every tier.",
   ),
   pilotNote: T(
@@ -194,10 +194,10 @@ export const PRICING = {
       cta: T("Туршилт эхлүүлэх", "Start trial"),
       features: [
         T("4 хүртэл камер", "Up to 4 cameras"),
-        T("Live AI overlay", "Live AI overlay"),
-        T("Telegram alert", "Telegram alerts"),
-        T("7 өдрийн clip retention", "7-day clip retention"),
-        T("Email support", "Email support"),
+        T("Шууд AI эрсдэлийн хүрээ", "Live AI overlay"),
+        T("Telegram мэдэгдэл", "Telegram alerts"),
+        T("Бичлэг 7 хоног хадгална", "7-day clip retention"),
+        T("И-мэйл дэмжлэг", "Email support"),
       ],
       highlight: false,
     },
@@ -211,10 +211,10 @@ export const PRICING = {
       features: [
         T("12 хүртэл камер", "Up to 12 cameras"),
         T("Starter-ын бүх боломж", "Everything in Starter"),
-        T("30 өдрийн clip retention", "30-day clip retention"),
-        T("Auto-learning (худал сэрэлт буурах)", "Auto-learning (FP reduction)"),
-        T("Ажлын цагт priority support", "Priority support (business hours)"),
-        T("Pi Zero edge box опц (+200,000₮ нэг удаа)", "Pi Zero edge add-on (+$59 one-time)"),
+        T("Бичлэг 30 хоног хадгална", "30-day clip retention"),
+        T("Өөрөө суралцах (хуурамч дохиолол буурах)", "Auto-learning (FP reduction)"),
+        T("Ажлын цагаар нэн тэргүүний дэмжлэг", "Priority support (business hours)"),
+        T("Pi Zero edge төхөөрөмж (нэг удаа +200,000₮)", "Pi Zero edge add-on (+$59 one-time)"),
       ],
       highlight: true,
     },
@@ -228,10 +228,10 @@ export const PRICING = {
       features: [
         T("20 хүртэл камер", "Up to 20 cameras"),
         T("Pro-ийн бүх боломж", "Everything in Pro"),
-        T("90 өдрийн clip retention", "90-day clip retention"),
-        T("24/7 phone support + SLA", "24/7 phone support + SLA"),
-        T("Pi 5 NPU edge box опц (+500,000₮)", "Pi 5 NPU edge add-on (+$149)"),
-        T("Custom integration (POS, ERP)", "Custom integrations (POS, ERP)"),
+        T("Бичлэг 90 хоног хадгална", "90-day clip retention"),
+        T("24/7 утсаар дэмжлэг + SLA", "24/7 phone support + SLA"),
+        T("Pi 5 NPU edge төхөөрөмж (+500,000₮)", "Pi 5 NPU edge add-on (+$149)"),
+        T("Тусгай холболт (POS, ERP)", "Custom integrations (POS, ERP)"),
       ],
       highlight: false,
     },
@@ -240,7 +240,7 @@ export const PRICING = {
 
 // ── FAQ ──────────────────────────────────────────────────────────────
 export const FAQ = {
-  title: T("Олон асуудаг асуулт", "Frequently asked"),
+  title: T("Түгээмэл асуулт", "Frequently asked"),
   items: [
     {
       q: T(
@@ -254,31 +254,31 @@ export const FAQ = {
     },
     {
       q: T(
-        "Хүний нүүрийг таних уу?",
+        "Хүний царайг таних уу?",
         "Does it use facial recognition?",
       ),
       a: T(
-        "Үгүй. Бид зөвхөн **зан үйлийг** дүгнэдэг — гар халаас руу очих, эргэж харах, бөхийх г.м. Хүний нэр таних, биометр хадгалах ҮГҮЙ. Энэ нь хууль ёсны хувьд цэвэр, customer-ийн нууцлалд ээлтэй.",
+        "Үгүй. Бид зөвхөн **зан төлөвийг** дүгнэдэг — гар халаас руу очих, эргэн тойрноо ажих, бөхийх г.м. Хүний нэр таних, биометр мэдээлэл хадгалах огт үгүй. Энэ нь хууль ёсны хувьд цэвэр, үйлчлүүлэгчийн нууцлалд ээлтэй.",
         "No. We score behavior only — hands going to pockets, looking around, crouching, etc. We never identify or store biometric data. Cleaner legally, friendlier to your customers.",
       ),
     },
     {
       q: T(
-        "Худал сэрэлт хэр их вэ?",
+        "Хуурамч дохиолол хэр их вэ?",
         "How many false alerts will we get?",
       ),
       a: T(
-        "Эхний долоо хоногт ~20-30% худал сэрэлт. Staff ✗ дараад AI-ийг сургахад 2 долоо хоногын дараа 10-15% хүртэл буурдаг. Дэлгүүр тус бүрд тохируулсан loop-той.",
+        "Эхний долоо хоногт ~20–30% хуурамч дохиолол гарна. Ажилтан ✗ дарж AI-г сургах тусам 2 дахь долоо хоногт ихэвчлэн 10–15% хүртэл буурдаг. Дэлгүүр бүр өөрийн гэсэн суралцах тохиргоотой.",
         "About 20–30% false alerts the first week. As staff mark them ✗, the model adapts — usually 10–15% by week 2. Per-store learning loop.",
       ),
     },
     {
       q: T(
-        "Видео бичлэгийг хаана хадгална? Нууцлал?",
+        "Видео бичлэгийг хаана хадгалах вэ? Нууцлал?",
         "Where is the video stored? Privacy?",
       ),
       a: T(
-        "**24/7 бичлэг ХАДГАЛАХГҮЙ.** Зөвхөн threshold-аас давсан мөч (5-15 сек clip) хадгалагдана. Энэ нь Hetzner-ын EU data center дээр — GDPR-стандарттай. 7-90 хоногийн дараа автоматаар устгана. Customer хүсвэл бүх data-аа татаж эсвэл устгаж болно.",
+        "**24/7 бичлэг хадгалдаггүй.** Зөвхөн эрсдэл хэтэрсэн мөч (5–15 сек бичлэг) хадгалагдана. Энэ нь Hetzner-ийн EU дата төвд — GDPR стандарттай. 7–90 хоногийн дараа автоматаар устгана. Үйлчлүүлэгч хүсвэл бүх мэдээллээ татаж эсвэл устгаж болно.",
         "**We don't record 24/7.** Only threshold-breach moments (5–15 sec clips) are saved, on Hetzner EU servers — GDPR-grade. Auto-deleted after 7–90 days. Customers can export or delete all their data on request.",
       ),
     },
@@ -288,7 +288,7 @@ export const FAQ = {
         "What happens if power goes out?",
       ),
       a: T(
-        "Агент PC асаасны дараа автоматаар сэргэдэг. Camera, network эргэж ирмэгцээ stream дахин эхэлнэ. UPS байгаа нь сайн — гэхдээ заавал биш.",
+        "Агент компьютер дахин асмагц өөрөө сэргэдэг. Камер, сүлжээ эргэж ирмэгц дамжуулалт дахин эхэлнэ. UPS байвал сайн — гэхдээ заавал биш.",
         "Agent auto-resumes when the PC powers back on. Streaming restarts as soon as camera + network return. A UPS is nice but not required.",
       ),
     },
@@ -298,27 +298,27 @@ export const FAQ = {
         "How many cameras do I need?",
       ),
       a: T(
-        "Хамгийн чухал газрууд: касс орчим (хулгай ихтэй), хаалга (гарах үеийн алдагдал), үнэт бараа (electronics, гоо сайхан, согтууруулах). Жижиг convenience store-д 2-4, supermarket-д 8-15 камер хангалттай.",
+        "Хамгийн чухал газрууд: касс орчим (хулгай ихтэй), хаалга (гарах үеийн алдагдал), үнэт бараа (электрон, гоо сайхан, согтууруулах). Жижиг дэлгүүрт 2–4, супермаркетад 8–15 камер хангалттай.",
         "Focus on hotspots: checkout area (theft), exits (loss-on-exit), premium shelves (electronics, cosmetics, alcohol). 2–4 cameras for a small convenience store, 8–15 for a supermarket.",
       ),
     },
     {
       q: T(
-        "GPU эсвэл өндөр чанартай PC хэрэгтэй юу?",
+        "Хүчирхэг компьютер эсвэл GPU хэрэгтэй юу?",
         "Do I need a GPU or high-end PC?",
       ),
       a: T(
-        "Үгүй. Агент 5%-аас бага CPU зарцуулна (i3, 4 GB RAM ч хангалттай). AI-ийн хүнд ажил (VLM) манай cloud дээр явдаг — таны PC дээр биш.",
+        "Үгүй. Агент 5%-аас бага хүчин чадал иднэ (i3, 4 GB RAM ч хангалттай). AI-ийн хүнд тооцоолол манай cloud дээр явдаг — танай компьютер дээр биш.",
         "No. The agent uses <5% CPU (even an i3 with 4 GB RAM is fine). The heavy AI (VLM) runs on our cloud, not your PC.",
       ),
     },
     {
       q: T(
-        "Интернет тасрахад юу болох вэ?",
+        "Интернэт тасрахад юу болох вэ?",
         "What if internet goes down?",
       ),
       a: T(
-        "AI шинжилгээ түр зогсоно (cloud GPU-д хүрэхгүй болно). Гэхдээ агент сэргэхээр шууд reconnect хийдэг. Live monitoring зөвхөн интернеттэй үед.",
+        "AI шинжилгээ түр зогсоно (cloud-д хүрэхгүй болно). Гэхдээ интернэт сэргэмэгц агент шууд дахин холбогддог. Шууд хяналт зөвхөн интернэттэй үед ажиллана.",
         "AI analysis pauses (no cloud reach). Agent auto-reconnects as soon as internet returns. Live monitoring requires internet — it's a cloud service.",
       ),
     },
@@ -328,11 +328,11 @@ export const FAQ = {
 // ── CTA ──────────────────────────────────────────────────────────────
 export const CTA = {
   title: T(
-    "3 сар үнэгүй туршаад үз",
+    "3 сар үнэгүй туршаад үзээрэй",
     "Try it free for 3 months",
   ),
   subtitle: T(
-    "Pilot хөтөлбөрт хязгаарлагдмал тооны дэлгүүр — хүсэлт явуулаад 24 цагт хариулна.",
+    "Пилот хөтөлбөрт хязгаарлагдмал тооны дэлгүүр авна — хүсэлтээ үлдээгээрэй, 24 цагийн дотор хариулна.",
     "Limited pilot spots — submit your interest and we'll reply within 24 hours.",
   ),
   emailPlaceholder: T("email@delgur.mn", "you@store.com"),
@@ -340,7 +340,7 @@ export const CTA = {
   cameraCountPlaceholder: T("Камерын тоо", "Number of cameras"),
   submit: T("Хүсэлт явуулах", "Request access"),
   privacyNote: T(
-    "Email-ийг зөвхөн pilot-той холбоо барихад ашиглана. Spam үгүй.",
+    "И-мэйлийг зөвхөн пилотын талаар холбоо барихад ашиглана. Спам байхгүй.",
     "Email used only to reach you about the pilot. No spam.",
   ),
 };
