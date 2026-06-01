@@ -6,8 +6,8 @@ FROM node:22-alpine AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --no-audit --no-fund
+# No BuildKit cache mount — Railway's Metal builder rejects it.
+RUN npm ci --no-audit --no-fund
 
 # ============================================================================
 # Stage 2 — builder: Astro production build
