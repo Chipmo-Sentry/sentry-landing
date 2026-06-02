@@ -15,8 +15,8 @@ export function tr(s: LocalizedString, lang: Lang): string {
 export const BRAND = {
   name: "Chipmo Sentry",
   tagline: T(
-    "CCTV-г AI хяналтын ажилтан болго",
-    "Turn your CCTV into an AI security operator",
+    "Дэлгүүрийн CCTV-г AI хяналтын ажилтан болго",
+    "Turn your store's CCTV into an AI loss-prevention operator",
   ),
 };
 
@@ -31,36 +31,36 @@ export const NAV = [
 
 // ── Hero ─────────────────────────────────────────────────────────────
 export const HERO = {
-  eyebrow: T("AI видео хяналтын платформ", "AI video intelligence platform"),
+  eyebrow: T("Ритэйлд зориулсан AI хяналт", "AI loss prevention for retail"),
   title: T(
-    "CCTV-г AI ажилтан болго",
-    "Turn your CCTV into an AI operator",
+    "24/7 камер хяналтын AI ажилтантай болоорой",
+    "Get a 24/7 AI camera-monitoring operator",
   ),
   subtitle: T(
-    "Таны одоо байгаа камерыг ашиглан хулгай, сэжигтэй үйлдэл, хөдөлмөр хамгаалалт болон үйл ажиллагааны эрсдэлийг бодит цагт илрүүлнэ.",
-    "Use the cameras you already have to detect theft, suspicious behavior, safety violations, and operational risks — in real time.",
+    "Таны дэлгүүрийн одоо байгаа камерыг ашиглан хулгай, сэжигтэй үйлдэл, кассын залилан болон дотоод алдагдлыг бодит цагт илрүүлж шууд мэдэгдэнэ.",
+    "Use your store's existing cameras to catch shoplifting, suspicious behaviour, checkout fraud, and internal shrinkage — in real time.",
   ),
   bullets: [
     T("Шинэ камер шаардлагагүй", "No new cameras"),
     T("24/7 автомат хяналт", "24/7 automated monitoring"),
     T("Бодит цагийн сэрэмжлүүлэг", "Real-time alerts"),
     T(
-      "Дэлгүүр, агуулах, үйлдвэр, оффист ашиглах боломжтой",
-      "Works for retail, warehouses, factories, and offices",
+      "Жижиг дэлгүүрээс том ритэйл сүлжээ хүртэл",
+      "From a single shop to a national retail chain",
     ),
   ],
   primaryCta: T("Demo үзэх", "Book a demo"),
   secondaryCta: T("Үнийн санал авах", "Get a quote"),
   trustline: T(
-    "Ритэйл болон үйлдвэрийн талбайд туршилтын төсөл хийх боломжтой.",
-    "Pilot projects available for retail and industrial sites.",
+    "Дэлгүүр, ритэйл сүлжээнд туршилтын төсөл хийх боломжтой.",
+    "Pilot projects available for shops and retail chains.",
   ),
   // Hero-гийн доорх enterprise итгэлийн товч заагчид
   trustIndicators: [
     T("Одоо байгаа CCTV-тэй нийцнэ", "Existing CCTV compatible"),
     T("Бодит цагийн сэрэмжлүүлэг", "Real-time alerts"),
     T("Edge / server байршуулалт", "Edge / server deployment"),
-    T("Ритэйл + Үйлдвэрийн хэрэглээ", "Retail + Industrial use cases"),
+    T("Ритэйлд тусгайлан зориулсан", "Purpose-built for retail"),
   ],
 };
 
@@ -68,8 +68,8 @@ export const HERO = {
 export const RISKS = {
   title: T("Ямар эрсдэл илрүүлэх вэ?", "What risks can it detect?"),
   subtitle: T(
-    "Нэг AI давхарга — олон төрлийн эрсдэл.",
-    "One AI layer — many kinds of risk.",
+    "Нэг AI давхарга — дэлгүүрийн олон төрлийн алдагдал.",
+    "One AI layer — every kind of retail loss.",
   ),
   cards: [
     {
@@ -90,34 +90,34 @@ export const RISKS = {
     },
     {
       icon: "internal",
-      title: T("Ажилтны дотоод зөрчил", "Internal misconduct"),
+      title: T("Ажилтны дотоод хулгай", "Internal theft"),
       body: T(
-        "Дотоод хулгай, дүрэм зөрчлийг анзаарна.",
-        "Catches internal theft and policy violations.",
+        "Ажилтны дотоод хулгай, дүрэм зөрчлийг анзаарна.",
+        "Catches staff theft and policy violations behind the counter.",
       ),
     },
     {
       icon: "zone",
-      title: T("Хориглосон бүс рүү нэвтрэх", "Restricted-area access"),
+      title: T("Кассын залилан", "Checkout fraud"),
       body: T(
-        "Зөвшөөрөлгүй хүн хязгаарлагдмал бүсэд орохыг илрүүлнэ.",
-        "Detects unauthorized entry into restricted zones.",
+        "Дутуу цохилт, баримтгүй буцаалт, sweethearting зэрэг кассын зөрчлийг анзаарна.",
+        "Spots under-ringing, fake refunds, and sweethearting at the till.",
       ),
     },
     {
       icon: "ppe",
-      title: T("PPE / хамгаалах хэрэгсэл", "PPE compliance"),
+      title: T("Цагийн бус нэвтрэлт", "After-hours entry"),
       body: T(
-        "Каск, хантааз зэрэг хамгаалах хэрэгсэл зүүсэн эсэхийг шалгана.",
-        "Checks whether helmets, vests, and other PPE are worn.",
+        "Хаалтын дараах зөвшөөрөлгүй нэвтрэлт, эвдрэлийг илрүүлнэ.",
+        "Detects unauthorized entry and break-ins after closing.",
       ),
     },
     {
       icon: "safety",
-      title: T("Агуулах, үйлдвэрийн аюулгүй байдал", "Warehouse & factory safety"),
+      title: T("Шошго солих, бараа сольж авах", "Ticket switching"),
       body: T(
-        "Аюултай бүс, осолд хүргэх нөхцөлийг хянана.",
-        "Monitors hazardous zones and accident-prone conditions.",
+        "Үнийн шошго солих, баглаа задлах зэрэг луйврын оролдлогыг анзаарна.",
+        "Flags price-tag swaps and packaging-tamper attempts.",
       ),
     },
   ],
@@ -160,7 +160,7 @@ export const HOW = {
 
 // ── Яагаад бизнесүүдэд хэрэгтэй вэ? (outcome-driven) ──────────────────
 export const VALUE = {
-  title: T("Яагаад бизнесүүдэд хэрэгтэй вэ?", "Why businesses need it"),
+  title: T("Яагаад дэлгүүрүүдэд хэрэгтэй вэ?", "Why retailers need it"),
   subtitle: T(
     "Технологи биш — бизнесийн үр дүн.",
     "Not technology for its own sake — business outcomes.",
@@ -201,44 +201,44 @@ export const VALUE = {
   ],
 };
 
-// ── Нэг платформ. Олон хэрэглээ. (industries) ────────────────────────
+// ── Дэлгүүрийн бүх бүсэд (store zones) ───────────────────────────────
 export const USE_CASES = {
-  title: T("Нэг платформ. Олон хэрэглээ.", "One platform. Many use cases."),
+  title: T("Дэлгүүрийн бүх бүсэд", "Every zone of your store"),
   subtitle: T(
-    "Ритэйлээс эхэлсэн ч ритэйлээр хязгаарлагдахгүй.",
-    "Starts with retail — but isn't limited to it.",
+    "Орцоос касс хүртэл — нэг AI давхарга бүх цэгийг хянана.",
+    "From the entrance to the checkout — one AI layer covers it all.",
   ),
   cards: [
     {
-      icon: "retail",
-      title: T("Retail Security", "Retail Security"),
+      icon: "checkout",
+      title: T("Кассын бүс", "Checkout"),
       body: T(
-        "Дэлгүүрийн хулгай, сэжигтэй үйлдэл, кассын бүсийн хяналт.",
-        "Shoplifting, suspicious behavior, checkout-zone monitoring.",
+        "Дутуу цохилт, баримтгүй буцаалт, кассын луйврыг хянана.",
+        "Watches for under-ringing, fake refunds, and till fraud.",
       ),
     },
     {
-      icon: "warehouse",
-      title: T("Warehouse Monitoring", "Warehouse Monitoring"),
+      icon: "aisles",
+      title: T("Лангуу, тавиурын эгнээ", "Aisles & shelves"),
       body: T(
-        "Агуулахын хөдөлгөөн, бараа алдагдал, хориглосон бүс.",
-        "Warehouse movement, inventory loss, restricted zones.",
+        "Бараа нуух, халаасандаа хийх зэрэг хулгайн үйлдлийг илрүүлнэ.",
+        "Detects concealment and shelf theft along the aisles.",
       ),
     },
     {
-      icon: "factory",
-      title: T("Factory Safety", "Factory Safety"),
+      icon: "entrance",
+      title: T("Орц / гарц", "Entrance & exit"),
       body: T(
-        "PPE detection, near-miss, аюултай бүсийн хяналт.",
-        "PPE detection, near-miss events, hazardous-zone monitoring.",
+        "Төлбөргүй гарах, цагийн бус нэвтрэлтийг анзаарна.",
+        "Catches walk-outs and after-hours entry.",
       ),
     },
     {
-      icon: "office",
-      title: T("Office / Building", "Office / Building"),
+      icon: "stockroom",
+      title: T("Склад / агуулах", "Stockroom"),
       body: T(
-        "Ирц, зөвшөөрөлгүй нэвтрэлт, хамгаалалтын хяналт.",
-        "Attendance, unauthorized access, security monitoring.",
+        "Ажилтны дотоод хулгай, барааны алдагдлыг хянана.",
+        "Monitors internal theft and stock shrinkage in the back room.",
       ),
     },
   ],
@@ -261,7 +261,7 @@ export const PRICING = {
       name: T("Starter", "Starter"),
       price: T("25,000₮", "$8"),
       period: T("/ камер / сар", "/ camera / mo"),
-      tagline: T("Жижиг бизнес, эхлэлийн багц", "Small business, getting started"),
+      tagline: T("Жижиг дэлгүүр, эхлэлийн багц", "Small shop, getting started"),
       cta: T("Demo авах", "Book a demo"),
       features: [
         T("Бодит цагийн AI илрүүлэлт", "Real-time AI detection"),
@@ -276,7 +276,7 @@ export const PRICING = {
       name: T("Pro", "Pro"),
       price: T("50,000₮", "$15"),
       period: T("/ камер / сар", "/ camera / mo"),
-      tagline: T("Олон камертай бизнест", "Multi-camera businesses"),
+      tagline: T("Олон салбартай дэлгүүрт", "Multi-branch retailers"),
       cta: T("Demo авах", "Book a demo"),
       features: [
         T("Starter-ийн бүх боломж", "Everything in Starter"),
@@ -291,7 +291,7 @@ export const PRICING = {
       name: T("Enterprise", "Enterprise"),
       price: T("Тусгай санал", "Custom"),
       period: T("", ""),
-      tagline: T("Том сүлжээ, үйлдвэр", "Chains & industrial sites"),
+      tagline: T("Том ритэйл сүлжээ", "Large retail chains"),
       cta: T("Холбоо барих", "Talk to us"),
       features: [
         T("Pro-ийн бүх боломж", "Everything in Pro"),
@@ -363,11 +363,11 @@ export const CTA = {
   cameraCountPlaceholder: T("Камерын тоо", "Number of cameras"),
   industryLabel: T("Ашиглах салбар", "Industry"),
   industryOptions: [
-    T("Ритэйл / Дэлгүүр", "Retail / Store"),
-    T("Агуулах / Логистик", "Warehouse / Logistics"),
-    T("Үйлдвэр", "Factory"),
-    T("Оффис / Барилга", "Office / Building"),
-    T("Бусад", "Other"),
+    T("Супермаркет / Хүнсний", "Supermarket / Grocery"),
+    T("Хувцас / гоо сайхан", "Apparel / Cosmetics"),
+    T("Цахилгаан бараа / эм", "Electronics / Pharmacy"),
+    T("Олон салбартай сүлжээ", "Multi-branch chain"),
+    T("Бусад ритэйл", "Other retail"),
   ],
   submit: T("Demo авах", "Book a demo"),
   privacyNote: T(

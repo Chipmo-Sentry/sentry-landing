@@ -85,8 +85,8 @@ const events = [
             <svg class="h-4 w-4 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
             Sentry · Live Monitoring
           </div>
-          <div class="flex items-center gap-1.5 rounded-full bg-[var(--color-level-review)]/15 px-2 py-0.5 text-[10px] font-semibold text-white">
-            <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-level-review)] animate-pulse"></span>
+          <div class="live-blink flex items-center gap-1.5 rounded-full bg-[var(--color-level-review)]/15 px-2 py-0.5 text-[10px] font-semibold text-white">
+            <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-level-review)]"></span>
             LIVE
           </div>
         </div>
@@ -132,8 +132,8 @@ const events = [
         </div>
       </div>
 
-      <!-- Floating event cards -->
-      <div class="absolute -bottom-5 -left-4 hidden w-60 space-y-2 sm:block">
+      <!-- Floating event cards — float over the lower feed, clear of the metrics strip -->
+      <div class="absolute bottom-20 -left-4 hidden w-60 space-y-2 sm:block">
         {events.map((e, i) => (
           <div class={`reveal reveal-${i + 3} flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] p-3 shadow-lg`}>
             <span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg" style={`background:color-mix(in oklab, ${e.c} 14%, white)`}>

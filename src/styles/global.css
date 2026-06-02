@@ -111,8 +111,16 @@
   .reveal-3 { animation-delay: 0.19s; }
   .reveal-4 { animation-delay: 0.26s; }
 
+  /* Blinking LIVE status badge — like a recording light */
+  @keyframes live-blink {
+    0%, 55%  { opacity: 1; }
+    60%, 95% { opacity: 0.35; }
+    100%     { opacity: 1; }
+  }
+  .live-blink { animation: live-blink 1.4s ease-in-out infinite; }
+
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .reveal-1, .reveal-2, .reveal-3, .reveal-4 {
+    .reveal, .reveal-1, .reveal-2, .reveal-3, .reveal-4, .live-blink {
       animation: none;
     }
     html { scroll-behavior: auto; }
