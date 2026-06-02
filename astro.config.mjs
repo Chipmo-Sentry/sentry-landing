@@ -12,7 +12,10 @@ export default defineConfig({
   adapter: node({ mode: "standalone" }),
   integrations: [sitemap()],
   vite: {
-    plugins: [tailwindcss()],
+    // @tailwindcss/vite resolves its Vite `Plugin` type from a different Vite
+    // copy than Astro's bundled Vite. The structural mismatch (hotUpdate hook
+    // `this` context) is harmless at runtime — cast to keep `astro check` green.
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
   server: {
     host: "0.0.0.0",
