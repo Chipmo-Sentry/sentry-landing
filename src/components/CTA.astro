@@ -18,10 +18,6 @@ const inputClass =
       <h2 class="text-balance text-3xl font-bold tracking-tight sm:text-4xl">{CTA.title[lang]}</h2>
       <p class="mx-auto mt-3 max-w-xl text-[var(--color-muted-foreground)]">{CTA.subtitle[lang]}</p>
 
-      {/* TODO(backend): /api/lead currently logs to stdout (or forwards to
-          SENTRY_BACKEND_URL/api/v1/leads if set). Wire to the real CRM/lead
-          store and add server-side validation when the backend lead endpoint
-          ships. Form UI + POST handler below are functional today. */}
       {showError && (
         <p role="alert" class="mx-auto mt-6 max-w-xl rounded-[var(--radius)] border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/10 px-4 py-3 text-sm font-medium text-[var(--color-danger)]">
           {CTA.errorNote[lang]}
@@ -32,22 +28,51 @@ const inputClass =
         action="/api/lead"
         class="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2"
       >
-        <input type="text" name="name" autocomplete="name" placeholder={CTA.namePlaceholder[lang]} class={inputClass} />
-        <input type="text" name="organization" autocomplete="organization" placeholder={CTA.orgPlaceholder[lang]} class={inputClass} />
-        <input type="tel" name="phone" autocomplete="tel" placeholder={CTA.phonePlaceholder[lang]} class={inputClass} />
-        <input type="email" name="email" required autocomplete="email" placeholder={CTA.emailPlaceholder[lang]} class={inputClass} />
-        <input type="number" name="camera_count" min="1" max="500" placeholder={CTA.cameraCountPlaceholder[lang]} class={inputClass} />
-        <select
-          name="industry"
-          class={`${inputClass} text-[var(--color-muted-foreground)]`}
-          aria-label={CTA.industryLabel[lang]}
-          onchange="this.style.color = this.value ? 'var(--color-foreground)' : 'var(--color-muted-foreground)'"
-        >
-          <option value="" selected>{CTA.industryLabel[lang]}</option>
-          {CTA.industryOptions.map((opt) => (
-            <option value={opt.en} class="text-[var(--color-foreground)]">{opt[lang]}</option>
-          ))}
-        </select>
+        {/* Each field carries a visually-hidden <label> for screen readers
+            (LD.5). `display:contents` keeps the input in the grid flow. */}
+        <label class="contents">
+          <span class="sr-only">{CTA.namePlaceholder[lang]}</span>
+          <input type="text" name="name" autocomplete="name" placeholder={CTA.namePlaceholder[lang]} class={inputClass} />
+        </label>
+        <label class="contents">
+          <span class="sr-only">{CTA.orgPlaceholder[lang]}</span>
+          <input type="text" name="organization" autocomplete="organization" placeholder={CTA.orgPlaceholder[lang]} class={inputClass} />
+        </label>
+        <label class="contents">
+          <span class="sr-only">{CTA.phonePlaceholder[lang]}</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder={CTA.phonePlaceholder[lang]} class={inputClass} />
+        </label>
+        <label class="contents">
+          <span class="sr-only">{CTA.emailPlaceholder[lang]}</span>
+          <input type="email" name="email" required autocomplete="email" placeholder={CTA.emailPlaceholder[lang]} class={inputClass} />
+        </label>
+        <label class="contents">
+          <span class="sr-only">{CTA.cameraCountPlaceholder[lang]}</span>
+          <input type="number" name="camera_count" min="1" max="500" placeholder={CTA.cameraCountPlaceholder[lang]} class={inputClass} />
+        </label>
+        <label class="contents">
+          <span class="sr-only">{CTA.industryLabel[lang]}</span>
+          <select
+            name="industry"
+            class={`${inputClass} text-[var(--color-muted-foreground)]`}
+            onchange="this.style.color = this.value ? 'var(--color-foreground)' : 'var(--color-muted-foreground)'"
+          >
+            <option value="" selected>{CTA.industryLabel[lang]}</option>
+            {CTA.industryOptions.map((opt) => (
+              <option value={opt.en} class="text-[var(--color-foreground)]">{opt[lang]}</option>
+            ))}
+          </select>
+        </label>
+
+        {/* Honeypot (LD.2): hidden from humans, irresistible to dumb bots.
+            Kept off-screen + aria-hidden + not tabbable. The backend drops any
+            submission where this is non-empty. */}
+        <div class="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
+          <label>
+            Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
 
         <button
           type="submit"

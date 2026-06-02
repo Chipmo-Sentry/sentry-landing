@@ -15,8 +15,8 @@ export function tr(s: LocalizedString, lang: Lang): string {
 export const BRAND = {
   name: "Chipmo Sentry",
   tagline: T(
-    "Дэлгүүрийн CCTV-г AI хяналтын ажилтан болго",
-    "Turn your store's CCTV into an AI loss-prevention operator",
+    "Дэлгүүрийн CCTV-г 24/7 AI хяналтын ажилтан болгоно",
+    "Turns your store's CCTV into a 24/7 AI loss-prevention operator",
   ),
 };
 
@@ -24,7 +24,7 @@ export const BRAND = {
 export const NAV = [
   { href: "#risks", label: T("Эрсдэл", "Detection") },
   { href: "#how", label: T("Хэрхэн ажилладаг", "How it works") },
-  { href: "#use-cases", label: T("Хэрэглээ", "Use cases") },
+  { href: "#use-cases", label: T("Бүсүүд", "Use cases") },
   { href: "#pricing", label: T("Үнэ", "Pricing") },
   { href: "#faq", label: T("Асуулт", "FAQ") },
 ];
@@ -105,7 +105,7 @@ export const RISKS = {
       ),
     },
     {
-      icon: "ppe",
+      icon: "afterhours",
       title: T("Цагийн бус нэвтрэлт", "After-hours entry"),
       body: T(
         "Хаалтын дараах зөвшөөрөлгүй нэвтрэлт, эвдрэлийг илрүүлнэ.",
@@ -113,7 +113,7 @@ export const RISKS = {
       ),
     },
     {
-      icon: "safety",
+      icon: "ticket",
       title: T("Шошго солих, бараа сольж авах", "Ticket switching"),
       body: T(
         "Үнийн шошго солих, баглаа задлах зэрэг луйврын оролдлогыг анзаарна.",
@@ -349,8 +349,8 @@ export const FAQ = {
 // ── Final CTA ────────────────────────────────────────────────────────
 export const CTA = {
   title: T(
-    "Камеруудаа зүгээр бичлэг хадгалагч биш, AI хяналтын ажилтан болго",
-    "Make your cameras an AI operator — not just a recorder",
+    "Дэлгүүрээ 24/7 хянадаг AI ажилтантай болоорой",
+    "Get a 24/7 AI operator watching over your store",
   ),
   subtitle: T(
     "Sentry таны одоо байгаа CCTV систем дээр AI давхарга нэмж, эрсдэлийг бодит цагт илрүүлнэ.",
@@ -390,7 +390,7 @@ export const FOOTER = {
   productLinks: [
     { href: "#risks", label: T("Эрсдэл илрүүлэлт", "Detection") },
     { href: "#how", label: T("Хэрхэн ажилладаг", "How it works") },
-    { href: "#use-cases", label: T("Хэрэглээ", "Use cases") },
+    { href: "#use-cases", label: T("Бүсүүд", "Use cases") },
     { href: "#pricing", label: T("Үнэ", "Pricing") },
     { href: "#faq", label: T("Асуулт хариулт", "FAQ") },
   ],

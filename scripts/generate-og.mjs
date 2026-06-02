@@ -79,14 +79,14 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   </g>
 
   <!-- headline -->
-  <text x="64" y="290" font-family="${FONT}" font-size="92" font-weight="800" fill="#ffffff" letter-spacing="-2">CCTV-г AI</text>
-  <text x="64" y="392" font-family="${FONT}" font-size="92" font-weight="800" fill="#ffffff" letter-spacing="-2">ажилтан <tspan fill="${ORANGE}">болго</tspan></text>
+  <text x="64" y="272" font-family="${FONT}" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="-1.5">24/7 камер хяналтын</text>
+  <text x="64" y="348" font-family="${FONT}" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="-1.5">AI <tspan fill="${ORANGE}">ажилтантай</tspan> болоорой</text>
 
   <!-- subheadline -->
-  <text x="66" y="452" font-family="${FONT}" font-size="31" font-weight="500" fill="${SLATE_300}">Танай камер дээр AI — хулгай, эрсдэлийг бодит цагт илрүүлнэ.</text>
+  <text x="66" y="424" font-family="${FONT}" font-size="29" font-weight="500" fill="${SLATE_300}">Одоо байгаа CCTV дээр — хулгай, эрсдэлийг бодит цагт илрүүлнэ.</text>
 
   <!-- trust line -->
-  <text x="66" y="556" font-family="${FONT}" font-size="24" font-weight="600" fill="${SLATE_400}">Одоо байгаа CCTV  ·  Бодит цагийн сэрэмжлүүлэг  ·  Retail + Industrial</text>
+  <text x="66" y="556" font-family="${FONT}" font-size="24" font-weight="600" fill="${SLATE_400}">Одоо байгаа CCTV  ·  Бодит цагийн сэрэмжлүүлэг  ·  Ритэйлд зориулсан</text>
 
   <!-- url -->
   <text x="1136" y="556" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="700" fill="${ORANGE}">sentry.chipmo.mn</text>
