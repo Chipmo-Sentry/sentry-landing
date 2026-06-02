@@ -13,7 +13,7 @@ const lang = pickLang(Astro.props.lang);
       <p class="mt-3 text-[var(--color-muted-foreground)]">{HOW.subtitle[lang]}</p>
     </div>
 
-    <ol class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <ol class="mt-14 grid gap-4 md:grid-cols-3">
       {HOW.steps.map((step, i) => (
         <li class="lift relative rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[var(--color-background)] p-6">
           <span class="font-mono text-xs font-semibold tracking-widest text-[var(--color-primary)]">{step.n}</span>
@@ -23,7 +23,7 @@ const lang = pickLang(Astro.props.lang);
           {i < HOW.steps.length - 1 && (
             <!-- Arrow connector (hidden on mobile) -->
             <svg
-              class="absolute top-1/2 -right-3 hidden h-6 w-6 -translate-y-1/2 text-[var(--color-border)] lg:block"
+              class="absolute top-1/2 -right-3 hidden h-6 w-6 -translate-y-1/2 text-[var(--color-border)] md:block"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               aria-hidden="true"
             >

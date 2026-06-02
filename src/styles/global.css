@@ -1,19 +1,23 @@
-/* Tailwind v4 @theme — brand tokens матч sentry-ui-kit-ийн tokens */
+/* Tailwind v4 @theme — enterprise brand tokens, kept in sync with sentry-ui-kit. */
 @import "tailwindcss";
 
 @theme {
-  /* Brand */
-  --color-primary: oklch(0.72 0.18 55);              /* Chipmo orange #FF8A1F */
-  --color-primary-foreground: oklch(0.99 0 0);
-  --color-primary-tint: oklch(0.95 0.04 55);
+  /* Brand accent — single cooler orange (#F97316) for trust + clarity */
+  --color-primary: #f97316;                       /* orange-500 */
+  --color-primary-foreground: #ffffff;
+  --color-primary-tint: #fff7ed;                  /* orange-50 */
+  --color-primary-strong: #ea580c;                /* orange-600, hover */
 
-  /* Neutrals */
-  --color-background: oklch(0.99 0 0);
-  --color-surface: oklch(0.97 0.005 250);
-  --color-foreground: oklch(0.15 0.02 250);
-  --color-muted: oklch(0.96 0.005 250);
-  --color-muted-foreground: oklch(0.45 0.02 250);
-  --color-border: oklch(0.9 0.01 250);
+  /* Slate neutrals — enterprise base */
+  --color-background: #ffffff;                    /* base / card surface */
+  --color-surface: #f8fafc;                       /* section background (slate-50) */
+  --color-surface-2: #f1f5f9;                     /* alt section (slate-100) */
+  --color-foreground: #0f172a;                    /* slate-900, main text */
+  --color-muted: #f1f5f9;                          /* slate-100, hover */
+  --color-muted-foreground: #475569;              /* slate-600, secondary text */
+  --color-border: #e2e8f0;                         /* slate-200 */
+  --color-navy: #0f172a;                           /* enterprise dark card */
+  --color-navy-2: #1e293b;                         /* slate-800 */
 
   /* Semantic */
   --color-success: oklch(0.65 0.18 145);
@@ -23,7 +27,7 @@
   /* Alert level matching ui-kit (used in product screenshot stand-ins) */
   --color-level-ignore: oklch(0.65 0.02 250);
   --color-level-log: oklch(0.62 0.13 220);
-  --color-level-notify: oklch(0.72 0.18 55);
+  --color-level-notify: #f97316;
   --color-level-review: oklch(0.55 0.22 25);
 
   /* Type */
@@ -59,21 +63,58 @@
     letter-spacing: -0.025em;
   }
 
-  /* Subtle gradient blob hero background */
-  .hero-glow {
+  /* Subtle enterprise hero background — near-white → slate-50, faint grid + glow */
+  .hero-bg {
+    background-color: var(--color-background);
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.92 0.08 55 / 0.55), transparent),
-      radial-gradient(ellipse 40% 30% at 80% 30%, oklch(0.94 0.06 220 / 0.5), transparent),
-      radial-gradient(ellipse 50% 30% at 10% 60%, oklch(0.95 0.04 145 / 0.4), transparent);
+      radial-gradient(ellipse 60% 50% at 75% 0%, color-mix(in oklab, var(--color-primary) 9%, transparent), transparent 70%),
+      linear-gradient(180deg, #ffffff 0%, var(--color-surface) 100%);
   }
+  /* Back-compat alias — earlier Hero variants reference .hero-glow */
+  .hero-glow {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(ellipse 60% 50% at 75% 0%, color-mix(in oklab, var(--color-primary) 9%, transparent), transparent 70%),
+      linear-gradient(180deg, #ffffff 0%, var(--color-surface) 100%);
+  }
+  /* Faint dotted grid overlay for technical feel */
+  .grid-overlay {
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 0%, #000 30%, transparent 75%);
+  }
+}
 
-  /* Bento card hover lift */
+@layer utilities {
+  /* Subtle elevation only — enterprise, never heavy */
   .lift {
-    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 240ms ease;
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 220ms ease,
+                border-color 220ms ease;
   }
   .lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -10px oklch(0.15 0.02 250 / 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px -16px rgba(15, 23, 42, 0.18);
+    border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-border));
+  }
+
+  /* Calm entrance animations — fade + slight slide up, respects reduced-motion */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .reveal-1 { animation-delay: 0.05s; }
+  .reveal-2 { animation-delay: 0.12s; }
+  .reveal-3 { animation-delay: 0.19s; }
+  .reveal-4 { animation-delay: 0.26s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-1, .reveal-2, .reveal-3, .reveal-4 {
+      animation: none;
+    }
+    html { scroll-behavior: auto; }
   }
 }

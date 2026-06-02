@@ -2,8 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Hero from "@/components/Hero.astro";
+import Risks from "@/components/Risks.astro";
 import HowItWorks from "@/components/HowItWorks.astro";
-import Features from "@/components/Features.astro";
+import BusinessValue from "@/components/BusinessValue.astro";
+import UseCases from "@/components/UseCases.astro";
 import Pricing from "@/components/Pricing.astro";
 import FAQ from "@/components/FAQ.astro";
 import CTA from "@/components/CTA.astro";
@@ -21,8 +23,10 @@ const description = HERO.subtitle[lang];
   <Header lang={lang} />
   <main>
     <Hero lang={lang} />
+    <Risks lang={lang} />
     <HowItWorks lang={lang} />
-    <Features lang={lang} />
+    <BusinessValue lang={lang} />
+    <UseCases lang={lang} />
     <Pricing lang={lang} />
     <FAQ lang={lang} />
     <CTA lang={lang} />
