@@ -1,0 +1,35 @@
+---
+import { USE_CASES } from "@/lib/content";
+import { type Lang, pickLang } from "@/lib/i18n";
+
+interface Props { lang?: Lang }
+const lang = pickLang(Astro.props.lang);
+
+const ICONS: Record<string, string> = {
+  retail: `<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9h16v10a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 13h6"/>`,
+  warehouse: `<path d="M3 21V8l9-4 9 4v13"/><path d="M7 21v-7h10v7"/><path d="M10 14v7M14 14v7"/>`,
+  factory: `<path d="M3 21V10l6 4V10l6 4V7l6 3v11z"/><path d="M3 21h18"/>`,
+  office: `<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h.01M13 7h.01M9 11h.01M13 11h.01M9 15h.01M13 15h.01"/>`,
+};
+---
+
+<section id="use-cases" class="border-t border-[var(--color-border)] bg-[var(--color-background)]">
+  <div class="mx-auto max-w-6xl px-4 py-24 sm:py-28">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{USE_CASES.title[lang]}</h2>
+      <p class="mt-3 text-[var(--color-muted-foreground)]">{USE_CASES.subtitle[lang]}</p>
+    </div>
+
+    <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {USE_CASES.cards.map((c) => (
+        <article class="lift flex flex-col rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius)] bg-[var(--color-primary-tint)] text-[var(--color-primary)]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS[c.icon] ?? ICONS.retail}></svg>
+          </div>
+          <h3 class="mt-4 font-semibold">{c.title[lang]}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-[var(--color-muted-foreground)]">{c.body[lang]}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -4,91 +4,166 @@ import { type Lang, pickLang } from "@/lib/i18n";
 
 interface Props { lang?: Lang }
 const lang = pickLang(Astro.props.lang);
+
+// Right-side monitoring visual — faux live feed with detection boxes
+const boxes = [
+  { x: 12, y: 30, w: 20, h: 52, risk: 14, c: "green" },
+  { x: 46, y: 22, w: 19, h: 60, risk: 87, c: "red" },
+  { x: 72, y: 34, w: 18, h: 48, risk: 38, c: "yellow" },
+];
+const ring = (c: string) =>
+  c === "red" ? "var(--color-level-review)" : c === "yellow" ? "var(--color-level-notify)" : "var(--color-success)";
+
+// Floating event cards
+const events = [
+  { c: "var(--color-level-review)", label: { mn: "Хулгайн эрсдэл", en: "Theft risk" }, cam: "Тавиур 2", t: "now", risk: 87 },
+  { c: "var(--color-level-notify)", label: { mn: "Сэжигтэй үйлдэл", en: "Suspicious" }, cam: "Касс 1", t: "12s", risk: 54 },
+];
 ---
 
-<section class="hero-glow relative overflow-hidden">
-  <div class="mx-auto max-w-6xl px-4 pt-16 pb-20 text-center sm:pt-24 sm:pb-28">
-    <span class="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-background)]/80 px-3 py-1 text-xs font-medium text-[var(--color-muted-foreground)] backdrop-blur">
-      <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
-      {HERO.eyebrow[lang]}
-    </span>
+<section class="hero-bg relative overflow-hidden border-b border-[var(--color-border)]">
+  <div class="grid-overlay pointer-events-none absolute inset-0"></div>
 
-    <h1 class="mx-auto mt-6 max-w-4xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-      {HERO.title[lang]}
-    </h1>
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-28">
+    <!-- LEFT — message -->
+    <div class="reveal max-w-2xl">
+      <span class="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-background)] px-3.5 py-1.5 text-xs font-medium text-[var(--color-muted-foreground)] shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-primary)] opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-primary)]"></span>
+        </span>
+        {HERO.eyebrow[lang]}
+      </span>
 
-    <p class="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-[var(--color-muted-foreground)] sm:text-lg">
-      {HERO.subtitle[lang]}
-    </p>
+      <h1 class="mt-6 text-balance text-[2rem] font-bold leading-[1.05] tracking-tight text-[var(--color-foreground)] sm:text-5xl lg:text-[4rem]">
+        {HERO.title[lang]}
+      </h1>
 
-    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a
-        href="#cta"
-        class="inline-flex h-11 items-center justify-center rounded-[var(--radius)] bg-[var(--color-primary)] px-6 text-sm font-medium text-[var(--color-primary-foreground)] shadow-sm transition hover:opacity-90"
-      >
-        {HERO.primaryCta[lang]}
-      </a>
-      <a
-        href="#how"
-        class="inline-flex h-11 items-center justify-center rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)]/60 px-6 text-sm font-medium text-[var(--color-foreground)] transition hover:bg-[var(--color-muted)]"
-      >
-        {HERO.secondaryCta[lang]} →
-      </a>
+      <p class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-[var(--color-muted-foreground)] sm:text-lg">
+        {HERO.subtitle[lang]}
+      </p>
+
+      <!-- Benefit bullets -->
+      <ul class="mt-7 grid gap-2.5 sm:grid-cols-2">
+        {HERO.bullets.map((b) => (
+          <li class="flex items-start gap-2.5 text-sm font-medium text-[var(--color-foreground)]">
+            <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+            <span>{b[lang]}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTAs -->
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#cta"
+          class="group inline-flex h-13 items-center justify-center gap-2 rounded-[var(--radius)] bg-[var(--color-primary)] px-7 text-base font-semibold text-[var(--color-primary-foreground)] shadow-sm transition hover:bg-[var(--color-primary-strong)] hover:shadow-md"
+        >
+          {HERO.primaryCta[lang]}
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a
+          href="#pricing"
+          class="inline-flex h-13 items-center justify-center rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-7 text-base font-semibold text-[var(--color-foreground)] shadow-sm transition hover:border-[var(--color-primary)] hover:bg-[var(--color-surface)]"
+        >
+          {HERO.secondaryCta[lang]}
+        </a>
+      </div>
+
+      <p class="mt-5 text-xs text-[var(--color-muted-foreground)]">{HERO.trustline[lang]}</p>
     </div>
 
-    <p class="mt-6 text-xs text-[var(--color-muted-foreground)]">{HERO.trustline[lang]}</p>
-
-    <!-- Product mock-up — Live monitoring screenshot with risk boxes -->
-    <div class="mx-auto mt-14 max-w-5xl">
-      <div class="overflow-hidden rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[oklch(0.18_0.02_250)] shadow-2xl">
-        <!-- Browser chrome -->
-        <div class="flex items-center gap-1.5 border-b border-black/30 bg-[oklch(0.14_0.02_250)] px-3 py-2">
-          <span class="h-2.5 w-2.5 rounded-full bg-[oklch(0.55_0.22_25)]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[oklch(0.78_0.16_85)]"></span>
-          <span class="h-2.5 w-2.5 rounded-full bg-[oklch(0.65_0.18_145)]"></span>
-          <span class="ml-3 truncate rounded-md bg-black/30 px-3 py-0.5 text-xs text-white/60">app.sentry.chipmo.mn / live</span>
+    <!-- RIGHT — AI monitoring visual -->
+    <div class="reveal reveal-2 relative">
+      <!-- Main live-feed panel -->
+      <div class="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-navy)] shadow-2xl ring-1 ring-black/5">
+        <!-- Panel header -->
+        <div class="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+          <div class="flex items-center gap-2 text-[11px] font-medium text-white/70">
+            <svg class="h-4 w-4 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+            Sentry · Live Monitoring
+          </div>
+          <div class="flex items-center gap-1.5 rounded-full bg-[var(--color-level-review)]/15 px-2 py-0.5 text-[10px] font-semibold text-white">
+            <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-level-review)] animate-pulse"></span>
+            LIVE
+          </div>
         </div>
-        <!-- 4-camera grid mock -->
-        <div class="grid grid-cols-2 gap-1 bg-black p-1">
+
+        <!-- Feed -->
+        <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-[var(--color-navy-2)] to-[var(--color-navy)]">
+          <!-- faux scene -->
+          <div class="absolute inset-0 opacity-40" style="background: radial-gradient(circle at 35% 75%, oklch(0.45 0.05 240), transparent 55%), radial-gradient(circle at 80% 30%, oklch(0.4 0.04 60), transparent 50%)"></div>
+          <!-- scan line -->
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent opacity-70"></div>
+
+          <!-- detection boxes -->
+          {boxes.map((b) => (
+            <div
+              class="absolute rounded-sm border-2 backdrop-blur-[1px]"
+              style={`left:${b.x}%;top:${b.y}%;width:${b.w}%;height:${b.h}%;border-color:${ring(b.c)};box-shadow:0 0 0 1px rgba(0,0,0,.4), 0 0 18px -4px ${ring(b.c)}`}
+            >
+              <span class="absolute -top-5 left-0 flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-semibold text-white" style={`background:${ring(b.c)}`}>
+                {b.risk}%
+              </span>
+            </div>
+          ))}
+
+          <!-- corner stat chips -->
+          <div class="absolute bottom-2.5 left-2.5 flex gap-1.5">
+            <span class="rounded bg-black/55 px-2 py-1 text-[10px] font-medium text-white/90 backdrop-blur">Тавиур 2 · Hikvision</span>
+          </div>
+          <div class="absolute top-2.5 right-2.5 rounded bg-black/55 px-2 py-1 font-mono text-[10px] text-white/80 backdrop-blur">24 FPS · 3 objects</div>
+        </div>
+
+        <!-- mini metrics strip -->
+        <div class="grid grid-cols-3 divide-x divide-white/10 border-t border-white/10 text-center">
           {[
-            { label: "Касс 1 · Hikvision", boxes: [{ x: 18, y: 32, w: 22, h: 50, risk: 18, c: "green" }, { x: 56, y: 28, w: 18, h: 54, risk: 42, c: "yellow" }] },
-            { label: "Тавиур 2 · UNV",     boxes: [{ x: 30, y: 20, w: 28, h: 64, risk: 82, c: "red" }] },
-            { label: "Гарц · Tapo",          boxes: [{ x: 40, y: 28, w: 22, h: 56, risk: 9, c: "green" }] },
-            { label: "Тавиур 4 · Hikvision", boxes: [{ x: 14, y: 26, w: 20, h: 58, risk: 28, c: "green" }, { x: 60, y: 30, w: 22, h: 54, risk: 65, c: "yellow" }] },
-          ].map((cam) => (
-            <div class="relative aspect-video overflow-hidden bg-gradient-to-br from-[oklch(0.22_0.02_250)] to-[oklch(0.16_0.02_250)]">
-              <!-- Faux scene gradient -->
-              <div class="absolute inset-0 opacity-50" style="background: radial-gradient(circle at 30% 70%, oklch(0.4 0.05 240), transparent 60%)"></div>
-              <!-- Boxes -->
-              {cam.boxes.map((b) => {
-                const ringColor = b.c === "red" ? "var(--color-level-review)" : b.c === "yellow" ? "var(--color-level-notify)" : "var(--color-success)";
-                return (
-                  <div
-                    class="absolute border-2 backdrop-blur-[1px]"
-                    style={`left:${b.x}%;top:${b.y}%;width:${b.w}%;height:${b.h}%;border-color:${ringColor};box-shadow:0 0 0 1px rgba(0,0,0,0.35);`}
-                  >
-                    <span
-                      class="absolute -top-5 left-0 rounded px-1.5 py-0.5 text-[10px] font-semibold text-white"
-                      style={`background:${ringColor}`}
-                    >
-                      {b.risk}%
-                    </span>
-                  </div>
-                );
-              })}
-              <!-- Camera label -->
-              <div class="absolute bottom-1.5 left-1.5 rounded bg-black/65 px-1.5 py-0.5 text-[10px] font-medium text-white/90">
-                {cam.label}
-              </div>
-              <!-- Live dot -->
-              <div class="absolute top-1.5 right-1.5 flex items-center gap-1 rounded bg-black/65 px-1.5 py-0.5 text-[10px] text-white/90">
-                <span class="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"></span>
-                LIVE
-              </div>
+            { v: "8", k: { mn: "Камер", en: "Cameras" } },
+            { v: "1.2s", k: { mn: "Хариу", en: "Latency" } },
+            { v: "24/7", k: { mn: "Хяналт", en: "Uptime" } },
+          ].map((m) => (
+            <div class="px-2 py-3">
+              <div class="text-base font-bold text-white">{m.v}</div>
+              <div class="text-[10px] uppercase tracking-wider text-white/50">{m.k[lang]}</div>
             </div>
           ))}
         </div>
       </div>
+
+      <!-- Floating event cards -->
+      <div class="absolute -bottom-5 -left-4 hidden w-60 space-y-2 sm:block">
+        {events.map((e, i) => (
+          <div class={`reveal reveal-${i + 3} flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] p-3 shadow-lg`}>
+            <span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg" style={`background:color-mix(in oklab, ${e.c} 14%, white)`}>
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke={e.c} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+            </span>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center justify-between gap-2">
+                <span class="truncate text-xs font-semibold text-[var(--color-foreground)]">{e.label[lang]}</span>
+                <span class="font-mono text-[10px] text-[var(--color-muted-foreground)]">{e.t}</span>
+              </div>
+              <div class="mt-0.5 flex items-center gap-1.5">
+                <span class="text-[11px] text-[var(--color-muted-foreground)]">{e.cam}</span>
+                <span class="rounded px-1.5 text-[10px] font-semibold text-white" style={`background:${e.c}`}>{e.risk}%</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust bar -->
+  <div class="relative border-t border-[var(--color-border)] bg-[var(--color-background)]/60 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-5 sm:px-6">
+      {HERO.trustIndicators.map((t) => (
+        <span class="flex items-center gap-2 text-xs font-medium text-[var(--color-muted-foreground)] sm:text-sm">
+          <svg class="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          {t[lang]}
+        </span>
+      ))}
     </div>
   </div>
 </section>

@@ -4,45 +4,54 @@ import { type Lang, pickLang } from "@/lib/i18n";
 
 interface Props { lang?: Lang }
 const lang = pickLang(Astro.props.lang);
+
+// /api/lead bounces invalid submissions back to /?form=error#cta
+const showError = Astro.url.searchParams.get("form") === "error";
+
+const inputClass =
+  "h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]";
 ---
 
 <section id="cta" class="border-t border-[var(--color-border)] bg-[var(--color-background)]">
-  <div class="mx-auto max-w-3xl px-4 py-20 sm:py-24">
+  <div class="mx-auto max-w-3xl px-4 py-24 sm:py-28">
     <div class="rounded-[calc(var(--radius)*2)] border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-primary-tint)] to-[var(--color-background)] p-8 sm:p-12 text-center">
       <h2 class="text-balance text-3xl font-bold tracking-tight sm:text-4xl">{CTA.title[lang]}</h2>
       <p class="mx-auto mt-3 max-w-xl text-[var(--color-muted-foreground)]">{CTA.subtitle[lang]}</p>
 
+      {/* TODO(backend): /api/lead currently logs to stdout (or forwards to
+          SENTRY_BACKEND_URL/api/v1/leads if set). Wire to the real CRM/lead
+          store and add server-side validation when the backend lead endpoint
+          ships. Form UI + POST handler below are functional today. */}
+      {showError && (
+        <p role="alert" class="mx-auto mt-6 max-w-xl rounded-[var(--radius)] border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/10 px-4 py-3 text-sm font-medium text-[var(--color-danger)]">
+          {CTA.errorNote[lang]}
+        </p>
+      )}
       <form
         method="POST"
         action="/api/lead"
         class="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2"
-        novalidate
       >
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder={CTA.emailPlaceholder[lang]}
-          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] sm:col-span-2"
-        />
-        <input
-          type="text"
-          name="store_name"
-          placeholder={CTA.storeFieldPlaceholder[lang]}
-          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-        />
-        <input
-          type="number"
-          name="camera_count"
-          min="1"
-          max="50"
-          placeholder={CTA.cameraCountPlaceholder[lang]}
-          class="h-11 rounded-[var(--radius)] border border-[var(--color-border)] bg-[var(--color-background)] px-3 text-sm placeholder:text-[var(--color-muted-foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-        />
+        <input type="text" name="name" autocomplete="name" placeholder={CTA.namePlaceholder[lang]} class={inputClass} />
+        <input type="text" name="organization" autocomplete="organization" placeholder={CTA.orgPlaceholder[lang]} class={inputClass} />
+        <input type="tel" name="phone" autocomplete="tel" placeholder={CTA.phonePlaceholder[lang]} class={inputClass} />
+        <input type="email" name="email" required autocomplete="email" placeholder={CTA.emailPlaceholder[lang]} class={inputClass} />
+        <input type="number" name="camera_count" min="1" max="500" placeholder={CTA.cameraCountPlaceholder[lang]} class={inputClass} />
+        <select
+          name="industry"
+          class={`${inputClass} text-[var(--color-muted-foreground)]`}
+          aria-label={CTA.industryLabel[lang]}
+          onchange="this.style.color = this.value ? 'var(--color-foreground)' : 'var(--color-muted-foreground)'"
+        >
+          <option value="" selected>{CTA.industryLabel[lang]}</option>
+          {CTA.industryOptions.map((opt) => (
+            <option value={opt.en} class="text-[var(--color-foreground)]">{opt[lang]}</option>
+          ))}
+        </select>
 
         <button
           type="submit"
-          class="h-11 rounded-[var(--radius)] bg-[var(--color-primary)] px-6 text-sm font-medium text-[var(--color-primary-foreground)] shadow-sm transition hover:opacity-90 sm:col-span-2"
+          class="h-12 rounded-[var(--radius)] bg-[var(--color-primary)] px-6 text-base font-semibold text-[var(--color-primary-foreground)] shadow-sm transition hover:bg-[var(--color-primary-strong)] hover:shadow-md sm:col-span-2"
         >
           {CTA.submit[lang]}
         </button>
