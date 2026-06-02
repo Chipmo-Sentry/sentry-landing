@@ -5,62 +5,59 @@ import Logo from "./Logo.astro";
 
 interface Props { lang?: Lang }
 const lang = pickLang(Astro.props.lang);
+
+const colHead = "mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--color-muted-foreground)]";
+const linkClass = "text-sm text-[var(--color-muted-foreground)] transition-colors hover:text-[var(--color-foreground)]";
 ---
 
 <footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
-  <div class="mx-auto max-w-6xl px-4 py-12">
-    <div class="grid gap-10 md:grid-cols-4">
-      <div class="space-y-3">
+  <!-- thin brand accent -->
+  <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent opacity-60"></div>
+
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div class="max-w-xs space-y-4">
         <div class="flex items-center gap-2">
-          <Logo size={24} />
-          <span class="text-sm font-semibold">{BRAND.name}</span>
+          <Logo size={26} />
+          <span class="text-base font-semibold tracking-tight">{BRAND.name}</span>
         </div>
-        <p class="text-sm text-[var(--color-muted-foreground)]">{FOOTER.tagline[lang]}</p>
+        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">{FOOTER.tagline[lang]}</p>
       </div>
 
       <div>
-        <h3 class="mb-3 text-sm font-semibold">{FOOTER.product[lang]}</h3>
-        <ul class="space-y-2">
+        <h3 class={colHead}>{FOOTER.product[lang]}</h3>
+        <ul class="space-y-2.5">
           {FOOTER.productLinks.map((l) => (
-            <li>
-              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]">
-                {l.label[lang]}
-              </a>
-            </li>
+            <li><a href={l.href} class={linkClass}>{l.label[lang]}</a></li>
           ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="mb-3 text-sm font-semibold">{FOOTER.company[lang]}</h3>
-        <ul class="space-y-2">
+        <h3 class={colHead}>{FOOTER.company[lang]}</h3>
+        <ul class="space-y-2.5">
           {FOOTER.companyLinks.map((l) => (
-            <li>
-              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]">
-                {l.label[lang]}
-              </a>
-            </li>
+            <li><a href={l.href} class={linkClass}>{l.label[lang]}</a></li>
           ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="mb-3 text-sm font-semibold">{FOOTER.open[lang]}</h3>
-        <ul class="space-y-2">
+        <h3 class={colHead}>{FOOTER.open[lang]}</h3>
+        <ul class="space-y-2.5">
           {FOOTER.openLinks.map((l) => (
-            <li>
-              <a href={l.href} class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]" rel="noopener" target="_blank">
-                {l.label} →
-              </a>
-            </li>
+            <li><a href={l.href} class={linkClass} rel="noopener" target="_blank">{l.label} →</a></li>
           ))}
         </ul>
       </div>
     </div>
 
-    <div class="mt-10 flex flex-col gap-2 border-t border-[var(--color-border)] pt-6 text-xs text-[var(--color-muted-foreground)] sm:flex-row sm:justify-between">
+    <div class="mt-14 flex flex-col gap-3 border-t border-[var(--color-border)] pt-8 text-xs text-[var(--color-muted-foreground)] sm:flex-row sm:items-center sm:justify-between">
       <span>{FOOTER.copyright[lang]}</span>
-      <span>Apache 2.0 · <a href="https://github.com/Chipmo-Sentry" class="hover:text-[var(--color-foreground)]" target="_blank" rel="noopener">github.com/Chipmo-Sentry</a></span>
+      <span class="flex items-center gap-1.5">
+        Apache 2.0 ·
+        <a href="https://github.com/Chipmo-Sentry" class="font-medium transition-colors hover:text-[var(--color-foreground)]" target="_blank" rel="noopener">github.com/Chipmo-Sentry</a>
+      </span>
     </div>
   </div>
 </footer>

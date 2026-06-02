@@ -7,24 +7,28 @@ const lang = pickLang(Astro.props.lang);
 ---
 
 <section id="faq" class="border-t border-[var(--color-border)] bg-[var(--color-background)]">
-  <div class="mx-auto max-w-3xl px-4 py-20 sm:py-24">
-    <h2 class="text-center text-3xl font-bold tracking-tight sm:text-4xl">{FAQ.title[lang]}</h2>
+  <div class="mx-auto max-w-3xl px-4 py-24 sm:py-28">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{FAQ.title[lang]}</h2>
+    </div>
 
-    <div class="mt-12 divide-y divide-[var(--color-border)] rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[var(--color-surface)]">
+    <div class="mt-14 space-y-3">
       {FAQ.items.map((item, i) => (
-        <details class="group" open={i === 0 ? true : undefined}>
-          <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left font-medium hover:bg-[var(--color-muted)]/60 list-none">
+        <details class="group rounded-[calc(var(--radius)*1.5)] border border-[var(--color-border)] bg-[var(--color-surface)] transition hover:border-[var(--color-primary)]/40 open:border-[var(--color-primary)]/40 open:bg-[var(--color-background)] open:shadow-sm" open={i === 0 ? true : undefined}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-[var(--color-foreground)]">
             <span class="flex-1">{item.q[lang]}</span>
-            <svg class="h-4 w-4 flex-shrink-0 text-[var(--color-muted-foreground)] transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.2 7.2a.8.8 0 011.2 0L10 10.7l3.6-3.5a.8.8 0 011.2 1.1l-4.2 4.2a.8.8 0 01-1.2 0L5.2 8.3a.8.8 0 010-1.1z" clip-rule="evenodd"/>
-            </svg>
+            <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-muted-foreground)] transition group-open:border-[var(--color-primary)] group-open:bg-[var(--color-primary)] group-open:text-[var(--color-primary-foreground)]">
+              <svg class="h-4 w-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.2 7.2a.8.8 0 011.2 0L10 10.7l3.6-3.5a.8.8 0 011.2 1.1l-4.2 4.2a.8.8 0 01-1.2 0L5.2 8.3a.8.8 0 010-1.1z" clip-rule="evenodd"/>
+              </svg>
+            </span>
           </summary>
-          <div class="px-5 pb-5 pt-1 text-sm leading-relaxed text-[var(--color-muted-foreground)]" set:html={item.a[lang].replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--color-foreground)]">$1</strong>')}></div>
+          <div class="px-6 pb-6 pt-0 text-sm leading-relaxed text-[var(--color-muted-foreground)]" set:html={item.a[lang].replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--color-foreground)]">$1</strong>')}></div>
         </details>
       ))}
     </div>
 
-    <p class="mt-8 text-center text-sm text-[var(--color-muted-foreground)]">
+    <p class="mt-10 text-center text-sm text-[var(--color-muted-foreground)]">
       {lang === "mn" ? "Өөр асуулт байна уу? " : "Have another question? "}
       <a href="mailto:hello@chipmo.mn" class="font-medium text-[var(--color-primary)] hover:underline">hello@chipmo.mn</a>
     </p>
