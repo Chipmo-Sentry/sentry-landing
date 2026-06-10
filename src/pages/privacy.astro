@@ -49,8 +49,8 @@ const TITLE = lang === "mn" ? "Нууцлалын бодлого" : "Privacy Pol
         </h2>
         <p class="mt-2 text-[var(--color-muted-foreground)]">
           {lang === "mn"
-            ? "Видео clip-үүд Hetzner-ийн ЕХ-ийн data center (Falkenstein, Германд) дээр шифрлэгдэж хадгалагдана. Хэрэглэгчийн данс + alert metadata Railway-ийн EU PostgreSQL-д. Гуравдагч этгээд (Anthropic, OpenAI гэх мэт) хүртээмжгүй — VLM нь self-hosted Ollama, манай GPU server дээр."
-            : "Video clips are encrypted at rest on Hetzner's EU data center (Falkenstein, Germany). Account + alert metadata is on Railway's EU PostgreSQL. We don't use third-party AI APIs (Anthropic, OpenAI, etc.) — our VLM is self-hosted via Ollama on dedicated GPU servers."}
+            ? "Видео clip болон AI боловсруулалт нь Монгол Улсад байрлах манай өөрийн сервер (on-premise) дээр шифрлэгдэж хадгалагдана. Хэрэглэгчийн данс, тохиргоо, alert metadata зэрэг metadata нь Railway-ийн үүлэн дэд бүтцэд (PostgreSQL, гадаад) хадгалагдана. Гуравдагч этгээд (Anthropic, OpenAI гэх мэт) AI API ашигладаггүй — VLM нь self-hosted Ollama, манай GPU server дээр ажиллана."
+            : "Video clips and AI processing stay encrypted at rest on our own server located in Mongolia (on-premise). Metadata — account details, configuration, and alert metadata — is stored on Railway's cloud infrastructure (PostgreSQL, hosted abroad). We don't use third-party AI APIs (Anthropic, OpenAI, etc.) — our VLM is self-hosted via Ollama on our GPU server."}
         </p>
       </section>
 

@@ -38,6 +38,12 @@ const altLabel = altLang === "en" ? "EN" : "МН";
         {altLabel}
       </a>
       <a
+        href="https://app.sentry.chipmo.mn"
+        class="hidden rounded-md px-3 py-1.5 text-sm font-medium text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)] sm:inline-flex"
+      >
+        {lang === "mn" ? "Нэвтрэх" : "Log in"}
+      </a>
+      <a
         href="#cta"
         class="hidden rounded-[var(--radius)] bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-[var(--color-primary-foreground)] shadow-sm transition hover:bg-[var(--color-primary-strong)] sm:inline-flex"
       >
@@ -61,6 +67,12 @@ const altLabel = altLang === "en" ? "EN" : "МН";
               {item.label[lang]}
             </a>
           ))}
+          <a
+            href="https://app.sentry.chipmo.mn"
+            class="block rounded px-3 py-2 text-sm text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
+          >
+            {lang === "mn" ? "Нэвтрэх" : "Log in"}
+          </a>
           <a
             href="#cta"
             class="mt-1 block rounded bg-[var(--color-primary)] px-3 py-2 text-center text-sm font-medium text-[var(--color-primary-foreground)]"
