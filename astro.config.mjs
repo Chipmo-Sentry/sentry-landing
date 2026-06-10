@@ -10,6 +10,12 @@ export default defineConfig({
   site: SITE,
   output: "server",
   adapter: node({ mode: "standalone" }),
+  // Railway terminates TLS before the node server, so Astro perceives its own
+  // origin as http:// and the default CSRF checkOrigin rejects EVERY real
+  // browser form POST with 403 (verified in prod 2026-06-10, U01 audit).
+  // Safe to disable: the landing carries no auth cookies, and /api/lead is
+  // guarded by the honeypot + backend-side rate limit.
+  security: { checkOrigin: false },
   integrations: [sitemap()],
   vite: {
     // @tailwindcss/vite resolves its Vite `Plugin` type from a different Vite
