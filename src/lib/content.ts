@@ -244,44 +244,53 @@ export const USE_CASES = {
   ],
 };
 
-// ── Pricing (камер тутамд / сард) ────────────────────────────────────
+// ── Pricing (дэлгүүр бүрд: платформ төлбөр + камер тутмын үнэ) ───────
 export const PRICING = {
-  title: T("Ил тод, камер тутмын үнэ", "Transparent, per-camera pricing"),
+  title: T("Ил тод, дэлгүүртээ тохирсон үнэ", "Transparent pricing that fits your store"),
   subtitle: T(
-    "Камер тутамд / сард. Бүх багцад бодит цагийн сэрэмжлүүлэг.",
-    "Per camera / month. Real-time alerts on every plan.",
+    "Дэлгүүр бүрд платформын төлбөр + камер тутмын үнэ. Бүх багцад бодит цагийн AI илрүүлэлт, Telegram / апп мэдэгдэл, бүх горим багтсан.",
+    "Per store: a platform fee plus a per-camera rate. Every plan includes real-time AI detection, Telegram / app alerts, and all detection modes.",
   ),
   note: T(
-    "Туршилтын хугацаа болон байгууллагын хэрэгцээнд тохирсон багцыг demo уулзалтаар санал болгоно.",
-    "Trial period and a plan tailored to your needs are offered during the demo call.",
+    "Төлбөр урьдчилсан цэнэглэлтийн (хэтэвч) загвартай. Туршилтын хугацаа болон байгууллагын хэрэгцээнд тохирсон багцыг demo уулзалтаар санал болгоно.",
+    "Billing is prepaid (wallet top-up). Trial period and a plan tailored to your needs are offered during the demo call.",
   ),
   tiers: [
     {
       id: "starter",
       name: T("Starter", "Starter"),
-      price: T("25,000₮", "$8"),
-      period: T("/ камер / сар", "/ camera / mo"),
+      range: T("1–9 камер", "1–9 cameras"),
+      price: T("49,000₮", "₮49,000"),
+      period: T("/ дэлгүүр / сар", "/ store / mo"),
+      perCamera: T("+ 22,000₮ / камер / сар", "+ ₮22,000 / camera / mo"),
+      example: T("", ""),
       tagline: T("Жижиг дэлгүүр, эхлэлийн багц", "Small shop, getting started"),
       cta: T("Demo авах", "Book a demo"),
       features: [
         T("Бодит цагийн AI илрүүлэлт", "Real-time AI detection"),
-        T("Telegram / email сэрэмжлүүлэг", "Telegram / email alerts"),
+        T("Telegram / апп мэдэгдэл", "Telegram / app alerts"),
+        T("Бүх илрүүлэлтийн горим", "All detection modes"),
         T("Эрсдэлийн event бүртгэл", "Risk event log"),
-        T("И-мэйл дэмжлэг", "Email support"),
       ],
       highlight: false,
     },
     {
       id: "pro",
       name: T("Pro", "Pro"),
-      price: T("50,000₮", "$15"),
-      period: T("/ камер / сар", "/ camera / mo"),
-      tagline: T("Олон салбартай дэлгүүрт", "Multi-branch retailers"),
+      range: T("10–50 камер", "10–50 cameras"),
+      price: T("39,000₮", "₮39,000"),
+      period: T("/ дэлгүүр / сар", "/ store / mo"),
+      perCamera: T("+ 17,000₮ / камер / сар", "+ ₮17,000 / camera / mo"),
+      example: T(
+        "Жишээ: 20 камертай дэлгүүрт сард ~379,000₮",
+        "Example: a 20-camera store pays ~₮379,000 / mo",
+      ),
+      tagline: T("Дунд хэмжээний дэлгүүр, сүлжээнд", "Mid-size stores and chains"),
       cta: T("Demo авах", "Book a demo"),
       features: [
         T("Starter-ийн бүх боломж", "Everything in Starter"),
+        T("Камер тутмын хямдруулсан үнэ", "Lower per-camera rate"),
         T("Олон салбар / олон хэрэглэгч", "Multi-site / multi-user"),
-        T("Дэвшилтэт эрсдэлийн төрлүүд", "Advanced risk types"),
         T("Нэн тэргүүний дэмжлэг", "Priority support"),
       ],
       highlight: true,
@@ -289,13 +298,16 @@ export const PRICING = {
     {
       id: "enterprise",
       name: T("Enterprise", "Enterprise"),
-      price: T("Тусгай санал", "Custom"),
-      period: T("", ""),
+      range: T("51+ камер", "51+ cameras"),
+      price: T("29,000₮", "₮29,000"),
+      period: T("/ дэлгүүр / сар", "/ store / mo"),
+      perCamera: T("+ 12,000₮ / камер / сар", "+ ₮12,000 / camera / mo"),
+      example: T("", ""),
       tagline: T("Том ритэйл сүлжээ", "Large retail chains"),
       cta: T("Холбоо барих", "Talk to us"),
       features: [
         T("Pro-ийн бүх боломж", "Everything in Pro"),
-        T("Edge / server байршуулалт", "Edge / server deployment"),
+        T("Хамгийн хямд камерын үнэ", "Lowest per-camera rate"),
         T("Тусгай холболт (POS, ERP)", "Custom integrations (POS, ERP)"),
         T("SLA + 24/7 дэмжлэг", "SLA + 24/7 support"),
       ],

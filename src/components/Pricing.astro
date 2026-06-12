@@ -35,14 +35,36 @@ const lang = pickLang(Astro.props.lang);
             )}
 
             <header>
-              <h3 class={`text-lg font-semibold ${isEnterprise ? "text-white" : "text-[var(--color-foreground)]"}`}>{t.name[lang]}</h3>
+              <div class="flex items-center justify-between gap-2">
+                <h3 class={`text-lg font-semibold ${isEnterprise ? "text-white" : "text-[var(--color-foreground)]"}`}>{t.name[lang]}</h3>
+                <span
+                  class={[
+                    "rounded-full px-2.5 py-0.5 text-xs font-medium",
+                    isEnterprise
+                      ? "bg-white/10 text-white/70"
+                      : "bg-[var(--color-surface)] text-[var(--color-muted-foreground)] ring-1 ring-[var(--color-border)]",
+                  ].join(" ")}
+                >
+                  {t.range[lang]}
+                </span>
+              </div>
               <p class={`mt-1.5 text-sm ${isEnterprise ? "text-white/60" : "text-[var(--color-muted-foreground)]"}`}>{t.tagline[lang]}</p>
             </header>
 
-            <div class="mt-6 flex items-baseline gap-1.5">
-              <span class={`text-4xl font-bold tracking-tight ${isEnterprise ? "text-white" : "text-[var(--color-foreground)]"}`}>{t.price[lang]}</span>
-              {t.period[lang] && (
-                <span class={`text-sm ${isEnterprise ? "text-white/50" : "text-[var(--color-muted-foreground)]"}`}>{t.period[lang]}</span>
+            <div class="mt-6">
+              <div class="flex items-baseline gap-1.5">
+                <span class={`text-4xl font-bold tracking-tight ${isEnterprise ? "text-white" : "text-[var(--color-foreground)]"}`}>{t.price[lang]}</span>
+                {t.period[lang] && (
+                  <span class={`text-sm ${isEnterprise ? "text-white/50" : "text-[var(--color-muted-foreground)]"}`}>{t.period[lang]}</span>
+                )}
+              </div>
+              <p class={`mt-1.5 text-sm font-semibold ${isEnterprise ? "text-white/85" : "text-[var(--color-foreground)]"}`}>
+                {t.perCamera[lang]}
+              </p>
+              {t.example[lang] && (
+                <p class={`mt-2 text-xs ${isEnterprise ? "text-white/55" : "text-[var(--color-muted-foreground)]"}`}>
+                  {t.example[lang]}
+                </p>
               )}
             </div>
 
