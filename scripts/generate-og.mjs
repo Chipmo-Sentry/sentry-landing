@@ -37,9 +37,9 @@ function loadSharp() {
 }
 
 // ── Brand tokens (kept in sync with src/styles/global.css) ──────────────
-const ORANGE = "#f97316";
-const NAVY = "#0f172a";
-const NAVY_2 = "#1e293b";
+const ACCENT = "#3b82f6";
+const NAVY = "#0a0a0a";
+const NAVY_2 = "#172554";
 const SLATE_300 = "#cbd5e1";
 const SLATE_400 = "#94a3b8";
 
@@ -53,8 +53,8 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
       <stop offset="1" stop-color="${NAVY_2}"/>
     </linearGradient>
     <radialGradient id="glow" cx="78%" cy="22%" r="55%">
-      <stop offset="0" stop-color="${ORANGE}" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="${ORANGE}" stop-opacity="0"/>
+      <stop offset="0" stop-color="${ACCENT}" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="${ACCENT}" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -72,15 +72,15 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
 
   <!-- brand lockup -->
   <g transform="translate(64,56)">
-    <circle cx="22" cy="22" r="20" fill="none" stroke="${ORANGE}" stroke-width="3.2"/>
-    <circle cx="22" cy="22" r="8" fill="${ORANGE}"/>
+    <circle cx="22" cy="22" r="20" fill="none" stroke="${ACCENT}" stroke-width="3.2"/>
+    <circle cx="22" cy="22" r="8" fill="${ACCENT}"/>
     <circle cx="27" cy="17" r="2.1" fill="${NAVY}"/>
     <text x="58" y="32" font-family="${FONT}" font-size="30" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Chipmo Sentry</text>
   </g>
 
   <!-- headline -->
   <text x="64" y="272" font-family="${FONT}" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="-1.5">24/7 камер хяналтын</text>
-  <text x="64" y="348" font-family="${FONT}" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="-1.5">AI <tspan fill="${ORANGE}">ажилтантай</tspan> болоорой</text>
+  <text x="64" y="348" font-family="${FONT}" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="-1.5">AI <tspan fill="${ACCENT}">ажилтантай</tspan> болоорой</text>
 
   <!-- subheadline -->
   <text x="66" y="424" font-family="${FONT}" font-size="29" font-weight="500" fill="${SLATE_300}">Одоо байгаа CCTV дээр — хулгай, эрсдэлийг бодит цагт илрүүлнэ.</text>
@@ -89,12 +89,12 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   <text x="66" y="556" font-family="${FONT}" font-size="24" font-weight="600" fill="${SLATE_400}">Одоо байгаа CCTV  ·  Бодит цагийн сэрэмжлүүлэг  ·  Ритэйлд зориулсан</text>
 
   <!-- url -->
-  <text x="1136" y="556" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="700" fill="${ORANGE}">sentry.chipmo.mn</text>
+  <text x="1136" y="556" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="700" fill="${ACCENT}">sentry.chipmo.mn</text>
 
   <!-- detection-box accent (echoes the product) -->
   <g transform="translate(872,150)">
-    <rect x="0" y="0" width="232" height="232" rx="10" fill="none" stroke="${ORANGE}" stroke-width="3"/>
-    <rect x="0" y="-34" width="118" height="30" rx="6" fill="${ORANGE}"/>
+    <rect x="0" y="0" width="232" height="232" rx="10" fill="none" stroke="${ACCENT}" stroke-width="3"/>
+    <rect x="0" y="-34" width="118" height="30" rx="6" fill="${ACCENT}"/>
     <text x="14" y="-12" font-family="${FONT}" font-size="19" font-weight="700" fill="${NAVY}">Эрсдэл 87%</text>
     <circle cx="206" cy="26" r="6" fill="#ef4444"/>
     <text x="196" y="32" text-anchor="end" font-family="${FONT}" font-size="16" font-weight="700" fill="#ffffff">LIVE</text>
