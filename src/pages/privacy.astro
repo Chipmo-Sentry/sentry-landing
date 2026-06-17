@@ -9,7 +9,7 @@ const lang = pickLang(Astro.url.searchParams.get("lang"));
 const TITLE = lang === "mn" ? "Нууцлалын бодлого" : "Privacy Policy";
 ---
 
-<Layout title={`${TITLE} — Chipmo Sentry`} description={TITLE} lang={lang}>
+<Layout title={`${TITLE} — Sentry`} description={TITLE} lang={lang}>
   <Header lang={lang} />
 
   <main class="mx-auto max-w-3xl px-4 py-16">

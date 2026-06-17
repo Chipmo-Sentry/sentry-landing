@@ -8,7 +8,7 @@ const lang = pickLang(Astro.url.searchParams.get("lang"));
 const TITLE = lang === "mn" ? "Үйлчилгээний нөхцөл" : "Terms of Service";
 ---
 
-<Layout title={`${TITLE} — Chipmo Sentry`} description={TITLE} lang={lang}>
+<Layout title={`${TITLE} — Sentry`} description={TITLE} lang={lang}>
   <Header lang={lang} />
 
   <main class="mx-auto max-w-3xl px-4 py-16">
@@ -22,8 +22,8 @@ const TITLE = lang === "mn" ? "Үйлчилгээний нөхцөл" : "Terms o
         <h2 class="text-xl font-semibold">{lang === "mn" ? "1. Үйлчилгээний агуулга" : "1. Service description"}</h2>
         <p class="mt-2 text-[var(--color-muted-foreground)]">
           {lang === "mn"
-            ? "Chipmo Sentry бол cloud-based SaaS — customer-ийн IP камераас real-time stream аваад AI хяналт хийдэг. Subscription үндсэн дээр сар бүрд төлбөртэй."
-            : "Chipmo Sentry is a cloud-based SaaS that streams from customer IP cameras and runs AI monitoring. Subscription-based monthly billing."}
+            ? "Sentry бол cloud-based SaaS — customer-ийн IP камераас real-time stream аваад AI хяналт хийдэг. Subscription үндсэн дээр сар бүрд төлбөртэй."
+            : "Sentry is a cloud-based SaaS that streams from customer IP cameras and runs AI monitoring. Subscription-based monthly billing."}
         </p>
       </section>
 
@@ -31,8 +31,8 @@ const TITLE = lang === "mn" ? "Үйлчилгээний нөхцөл" : "Terms o
         <h2 class="text-xl font-semibold">{lang === "mn" ? "2. Хариуцлагын хязгаар" : "2. Limitation of liability"}</h2>
         <p class="mt-2 text-[var(--color-muted-foreground)]">
           {lang === "mn"
-            ? "Chipmo Sentry бол AI-ийн дэмжлэг — хүний шийдвэрийг орлохгүй. Бид staff-н шийдэл, customer-ийн хохирол, эсвэл хууль зөрчсөн үйлдэлд хариуцлага хүлээхгүй. AI зөв ажиллах магадлал 100% биш — false positive + false negative гарах боломжтой."
-            : "Chipmo Sentry is an AI assistant — it does not replace human judgment. We aren't liable for staff actions, customer losses, or legal disputes arising from use. AI accuracy is not 100% — false positives and false negatives can occur."}
+            ? "Sentry бол AI-ийн дэмжлэг — хүний шийдвэрийг орлохгүй. Бид staff-н шийдэл, customer-ийн хохирол, эсвэл хууль зөрчсөн үйлдэлд хариуцлага хүлээхгүй. AI зөв ажиллах магадлал 100% биш — false positive + false negative гарах боломжтой."
+            : "Sentry is an AI assistant — it does not replace human judgment. We aren't liable for staff actions, customer losses, or legal disputes arising from use. AI accuracy is not 100% — false positives and false negatives can occur."}
         </p>
       </section>
 

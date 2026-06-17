@@ -13,7 +13,7 @@ export function tr(s: LocalizedString, lang: Lang): string {
 
 // ── Brand ────────────────────────────────────────────────────────────
 export const BRAND = {
-  name: "Chipmo Sentry",
+  name: "Sentry",
   tagline: T(
     "Дэлгүүрийн CCTV-г 24/7 AI хяналтын ажилтан болгоно",
     "Turns your store's CCTV into a 24/7 AI loss-prevention operator",
