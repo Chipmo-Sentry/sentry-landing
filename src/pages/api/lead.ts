@@ -62,7 +62,16 @@ export const POST: APIRoute = async ({ request, redirect, clientAddress }) => {
         body: JSON.stringify(payload),
       });
       if (!resp.ok) {
-        console.error("[lead] backend rejected:", resp.status);
+        // docs/33 Sprint C — a rejected lead (429 rate-limit, 422 validation)
+        // used to log only the status code while the visitor still saw
+        // "Баярлалаа": the prospect vanished unrecoverably. Log the FULL
+        // payload too, so a rejected lead can always be recovered from the
+        // server logs and followed up by hand.
+        console.error(
+          "[lead] backend rejected:",
+          resp.status,
+          JSON.stringify(payload),
+        );
       }
     } catch (e) {
       // Don't fail the user request if the backend is down — log so the lead
